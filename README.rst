@@ -10,6 +10,6 @@ Build a Document locally
 
    cd docs/
    pip install sphinx
-   pip install sphinx-rtd-theme\n
+   pip install sphinx-rtd-theme
    make html
    open build/html
