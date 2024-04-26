@@ -1,9 +1,15 @@
-Template for the Read the Docs tutorial
+LLM Operator Documents
 =======================================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This is a source repository for https://llm-operator.readthedocs.io/en/latest/.
 
-Read the tutorial here:
+Build a Document locally
+------------------------
 
-https://docs.readthedocs.io/en/stable/tutorial/
+.. code-block:: console
+
+   cd docs/
+   pip install sphinx
+   pip install sphinx-rtd-theme\n
+   make html
+   open build/html
