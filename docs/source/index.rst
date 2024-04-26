@@ -9,11 +9,11 @@ Welcome to LLM Operator documentation!
    </p>
 
    <p style="text-align:center">
-   <strong>Run LLMs Anywhere</strong>
+   <strong>Convert your GPU clusters to a platform for generative AI workloads</strong>
    </p>
 
 
-**LLM Operator** builds a software stack that provides LLM as a service. More specifically it provides the
+LLM Operator builds a software stack that provides **LLM as a service**. It provides the
 `OpenAI-compatible API <https://platform.openai.com/docs/api-reference>`_ anywhere, including the
 following functionality:
 
@@ -21,6 +21,12 @@ following functionality:
 - LLM inference
 - Fine-tuned models management
 - Training/validation file management
+
+LLM Operator also provides optimization technology on GPU, including the following functionality:
+
+- Auto-scaling of inference-workloads
+- Efficient scheduling of fine-tuning batch jobs
+- GPU sharing
 
 Check out the :doc:`getting_started` section for further information, including
 how to install LLM Operator.
