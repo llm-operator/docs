@@ -25,7 +25,7 @@ We provide a Helm chart for installing LLM Operator. You can obtain the Helm cha
 
    helm repo add llm-operator http://llm-operator-charts.s3-website-us-west-2.amazonaws.com/
    helm repo update
-   helm upgrade --install -n <namespace> llm-operator llm-operator/llm-operator -f <values.yaml>
+   helm upgrade --install -n <namespace> --create-namespace llm-operator llm-operator/llm-operator -f <values.yaml>
 
 The next tutorial section goes through an example installation to a `Kind <https://kind.sigs.k8s.io/>`_ cluster
 running on an EC2 instance.
