@@ -15,6 +15,13 @@ We use Terraform and Ansible. Follow the links to install if you haven't.
 
 - `Terraform <https://developer.hashicorp.com/terraform/install>`_
 - `Ansible <https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html>`_
+- `kubernetes.core.k8s module for Ansible <https://docs.ansible.com/ansible/latest/collections/kubernetes/core/k8s_module.html>`_
+
+To install ``kubernetes.core.k8s`` module, run the following command:
+
+.. code-block:: console
+
+   ansible-galaxy collection install kubernetes.core
 
 
 Step 2: Clone the LLM Operator Repository
