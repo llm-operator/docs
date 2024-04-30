@@ -91,7 +91,7 @@ Here is an example Python code for hitting the chat endpoint.
    from openai import OpenAI
 
    client = OpenAI(
-     base_url="http://localhost:80/v1",
+     base_url="http://localhost:8080/v1",
      api_key="<dummy>"
    )
 
