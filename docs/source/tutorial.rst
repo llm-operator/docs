@@ -82,7 +82,7 @@ Here is an example command for listing all available models and hitting the chat
 .. code-block:: console
 
    curl http://localhost:8080/v1/models | jq
-   curl --request POST "http://localhost/v1/chat/completions" -d '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}'
+   curl --request POST "http://localhost:8080/v1/chat/completions" -d '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}'
 
 Here is an example Python code for hitting the chat endpoint.
 
