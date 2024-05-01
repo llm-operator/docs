@@ -70,7 +70,7 @@ Step 4: Interact with the LLM Service
 
 You can access the API endpoint by establishing a SSH port-forwarding.
 
-.. note::
+.. code-block:: console
 
    ansible all -i inventory.ini --ssh-extra-args="-L8080:localhost:80" -m shell -a "sleep infinity"
 
