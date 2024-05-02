@@ -90,7 +90,7 @@ with the following command:
      -a "kubectl get secrets -n monitoring grafana -o jsonpath='{.data.admin-password}'" | tail -1 | base64 --decode; echo
 
 
-Step 5: Obtain API Key
+Step 5: Obtain an API Key
 ----------------------
 
 To access LLM service, you need an API key. You can download the LLM Operator CLI and use that to login the system,
@@ -133,8 +133,8 @@ Here is an example Python code for hitting the chat endpoint.
 
 .. code-block:: python
 
-   from openai import OpenAI
    from os
+   from openai import OpenAI
 
    client = OpenAI(
      base_url="http://localhost:8080/v1",
@@ -148,6 +148,10 @@ Here is an example Python code for hitting the chat endpoint.
      ]
    )
    print(completion.choices[0].message)
+
+
+We have a Jupyter Notebook that goes through all the functionalites. Please download the Notebook
+from https://github.com/llm-operator/llm-operator/blob/main/tutorial/getting_started.ipynb to play around it.
 
 Step 7: Clean up
 ----------------
