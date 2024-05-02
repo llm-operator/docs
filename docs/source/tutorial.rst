@@ -25,7 +25,7 @@ To install ``kubernetes.core.k8s`` module, run the following command:
 
 
 Step 2: Clone the LLM Operator Repository
---------------------------------------------
+-----------------------------------------
 
 We use the Terraform configuration and Ansible playbook in the `the LLM Operator repository <https://github.com/llm-operator/llm-operator>`_.
 Run the following commands to clone the repo and move to the directory where the Terraform configuration file is stored.
@@ -65,34 +65,80 @@ Then, run the following Terraform commands to initialize and create an EC2 insta
 If you want to run only Ansible playbook, you can just run ``ansible-playbook -i inventory.ini playbook.yml``.
 
 
-Step 4: Interact with the LLM Service
--------------------------------------
+Step 4: Set up SSH Connection
+-----------------------------
 
-You can access the API endpoint by establishing a SSH port-forwarding.
+You can access the API endpoint and Grafana by establishing SSH port-forwarding.
 
 .. code-block:: console
 
-   ansible all -i inventory.ini --ssh-extra-args="-L8080:localhost:80" -m shell -a "sleep infinity"
+   ansible all \
+     -i inventory.ini \
+     --ssh-extra-args="-L8080:localhost:80 -L8081:localhost:8081" \
+     -a "kubectl port-forward -n monitoring service/grafana 8081:80"
 
 With the above command, you can hit the API via ``http://localhost:8080``. You can directly hit the endpoint via `curl`
 or other commands, or you can use `the OpenAI Python library <https://github.com/openai/openai-python>`_.
+
+You can also reach Grafana at ``http://localhost:8081``. The login username is ``admin``, and the password can be obtained
+with the following command:
+
+.. code-block:: console
+
+   ansible all \
+     -i inventory.ini \
+     -a "kubectl get secrets -n monitoring grafana -o jsonpath='{.data.admin-password}'" | tail -1 | base64 --decode; echo
+
+
+Step 5: Obtain API Key
+----------------------
+
+To access LLM service, you need an API key. You can download the LLM Operator CLI and use that to login the system,
+and obtain the API key.
+
+.. code-block:: console
+
+   # Download the binary.
+   export ARCH=<e.g., linux-amd64, darwin-arm64>
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.6.0/"${ARCH}"/llmo
+   chmod u+x ./llmo
+
+   # Login and get an API key.
+   ./llmo auth login --issuer-resolved-addr=127.0.0.1:8080
+
+Here is the username and the password of the admin user created by the above Terraform script:
+
+* Username: ``admin@example.com``
+* Password: ``password``
+
+Step 6: Interact with the LLM Service
+-------------------------------------
 
 Here is an example command for listing all available models and hitting the chat endpoint.
 
 .. code-block:: console
 
-   curl http://localhost:8080/v1/models | jq
-   curl --request POST "http://localhost:8080/v1/chat/completions" -d '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}'
+   export LLM_OPERATOR_TOKEN=<JWT obtained from llmo auth login>
+   curl \
+     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     http://localhost:8080/v1/models | jq
+
+   curl \
+     --request POST \
+     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --data '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
+     http://localhost:8080/v1/chat/completions
 
 Here is an example Python code for hitting the chat endpoint.
 
 .. code-block:: python
 
    from openai import OpenAI
+   from os
 
    client = OpenAI(
      base_url="http://localhost:8080/v1",
-     api_key="<dummy>"
+     api_key=os.environ["LLM_OPERATOR_TOKEN"]
    )
 
    completion = client.chat.completions.create(
@@ -103,7 +149,7 @@ Here is an example Python code for hitting the chat endpoint.
    )
    print(completion.choices[0].message)
 
-Step 5: Clean up
+Step 7: Clean up
 ----------------
 
 Run the following command to destroy the EC2 instance.
