@@ -100,16 +100,32 @@ and obtain the API key.
 
    # Download the binary.
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.7.0/"${ARCH}"/llmo
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.14.0/"${ARCH}"/llmo
    chmod u+x ./llmo
 
-   # Login and get an API key.
-   ./llmo auth login --issuer-resolved-addr=127.0.0.1:8080
+   # Login. Please see below the details.
+   ./llmo auth login
 
-Here is the username and the password of the admin user created by the above Terraform script:
+   # Create an API key.
+   ./llmo auth api-keys create --name Tutorial
+
+
+`llmo auth login` will ask for the endpoint URL and the issuer URL. Please use the default values for them
+(``http://localhost:8080/v1`` and `http://kong-kong-proxy.kong/v1/dex`).
+
+Then the command open a web browser to login. Please use the following username and the password.
 
 * Username: ``admin@example.com``
 * Password: ``password``
+
+The output of ``llmo auth api-keys create`` contains the secret of the created API key. Please save the value
+in the environment variable to use that in the following section:
+
+
+.. code-block:: console
+
+     export LLM_OPERATOR_TOKEN=<Secret obtained from llmo auth api-keys create>
+
 
 Step 6: Interact with the LLM Service
 -------------------------------------
@@ -118,7 +134,6 @@ Here is an example command for listing all available models and hitting the chat
 
 .. code-block:: console
 
-   export LLM_OPERATOR_TOKEN=<JWT obtained from llmo auth login>
    curl \
      --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
      http://localhost:8080/v1/models | jq
