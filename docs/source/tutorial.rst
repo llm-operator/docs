@@ -100,26 +100,26 @@ and obtain the API key.
 
    # Download the binary.
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.14.0/"${ARCH}"/llmo
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.15.0/"${ARCH}"/llmo
    chmod u+x ./llmo
 
-   # Login. Please see below the details.
+   # Login. Please see below for the details.
    ./llmo auth login
 
    # Create an API key.
    ./llmo auth api-keys create --name Tutorial
 
 
-`llmo auth login` will ask for the endpoint URL and the issuer URL. Please use the default values for them
-(``http://localhost:8080/v1`` and `http://kong-kong-proxy.kong/v1/dex`).
+``llmo auth login`` will ask for the endpoint URL and the issuer URL. Please use the default values for them
+(``http://localhost:8080/v1`` and ``http://kong-kong-proxy.kong/v1/dex``).
 
-Then the command open a web browser to login. Please use the following username and the password.
+Then the command will open a web browser to login. Please use the following username and the password.
 
 * Username: ``admin@example.com``
 * Password: ``password``
 
 The output of ``llmo auth api-keys create`` contains the secret of the created API key. Please save the value
-in the environment variable to use that in the following section:
+in the environment variable to use that in the following step:
 
 
 .. code-block:: console
