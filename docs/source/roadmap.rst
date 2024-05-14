@@ -1,10 +1,10 @@
-Development Plan
-================
+Roadmap
+=======
 
 Milestone 0 (Completed)
 -----------------------
 - [X] OpenAI compatible API
-- [X] ``google-gemma-2b-it`` support
+- [X] Models: ``google-gemma-2b-it``
 
 Milestone 1 (Completed)
 -----------------------
@@ -13,7 +13,7 @@ Milestone 1 (Completed)
 - [X] API key management
 - [X] Quota mangement for fine-tuning jobs
 - [X] Inference autoscaling with GPU utilization
-- [X] ``Mistral-7B-Instruct`` support
+- [X] Models: ``Mistral-7B-Instruct``, ``Meta-Llama-3-8B-Instruct``, and ``google-gemma-7b-it``
 
 Milestone 2 (In-progress)
 -------------------------
@@ -23,7 +23,7 @@ Milestone 2 (In-progress)
 - [ ] Jupyter Notebook workspace creation
 - [ ] MLflow integration
 - [ ] Events and metrics for fine-tuning jobs
-- [ ] LLaMA support
+- [ ] More models
 - [ ] Installation doc for Keda and Kuque
 - [ ] Monitoring & alerting
 
