@@ -42,3 +42,4 @@ Contents
 
    getting_started
    tutorial
+   development_plan
