@@ -13,7 +13,7 @@ requires the following components are installed in a target Kubernetes cluster:
 - S3-compatible object store (to store training files and LLM models)
 
 An SQL database and an S3-compatible object store can be inside the same Kubernetes cluster or outside. For example, you can deploy a Postgres database
-or `MinIO <https://https://min.io/>`_ into the same Kubernetes cluster, or you can use AWS RDS or AWS S3.
+or `MinIO <https://min.io/>`_ into the same Kubernetes cluster, or you can use AWS RDS or AWS S3.
 
 
 Installation

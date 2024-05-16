@@ -42,4 +42,5 @@ Contents
 
    getting_started
    tutorial
+   integrations
    roadmap
