@@ -8,8 +8,7 @@ Build a Document locally
 
 .. code-block:: console
 
-   cd docs/
    pip install sphinx
    pip install sphinx-rtd-theme
-   make html
+   make -C docs html
    open build/html
