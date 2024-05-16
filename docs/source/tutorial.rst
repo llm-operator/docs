@@ -78,7 +78,7 @@ You can access the API endpoint and Grafana by establishing SSH port-forwarding.
      -a "kubectl port-forward -n monitoring service/grafana 8081:80"
 
 With the above command, you can hit the API via ``http://localhost:8080``. You can directly hit the endpoint via `curl`
-or other commands, or you can use `the OpenAI Python library <https://github.com/openai/openai-python>`_.
+or other commands, or you can use the `OpenAI Python library <https://github.com/openai/openai-python>`_.
 
 You can also reach Grafana at ``http://localhost:8081``. The login username is ``admin``, and the password can be obtained
 with the following command:
@@ -91,7 +91,7 @@ with the following command:
 
 
 Step 5: Obtain an API Key
-----------------------
+------------------------
 
 To access LLM service, you need an API key. You can download the LLM Operator CLI and use that to login the system,
 and obtain the API key.
@@ -100,7 +100,7 @@ and obtain the API key.
 
    # Download the binary.
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.23.0/"${ARCH}"/llmo
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.26.0/"${ARCH}"/llmo
    chmod u+x ./llmo
 
    # Login. Please see below for the details.
@@ -130,6 +130,9 @@ in the environment variable to use that in the following step:
 Step 6: Interact with the LLM Service
 -------------------------------------
 
+There are mainly three ways to interact with the LLM service.
+
+The first option is to run the ``curl`` command and hit the API endpoint.
 Here is an example command for listing all available models and hitting the chat endpoint.
 
 .. code-block:: console
@@ -144,7 +147,17 @@ Here is an example command for listing all available models and hitting the chat
      --data '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
      http://localhost:8080/v1/chat/completions
 
-Here is an example Python code for hitting the chat endpoint.
+
+The second option is to use the CLI. Here are examle commands:
+
+.. code-block:: console
+
+   llmo models list
+
+   llmo chat completions create --model google-gemma-2b-it-q4 --role user --completion "What is k8s?"
+
+
+The third option is to use Python. Here is an example Python code for hitting the chat endpoint.
 
 .. code-block:: python
 
