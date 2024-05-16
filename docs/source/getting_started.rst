@@ -27,5 +27,9 @@ We provide a Helm chart for installing LLM Operator. You can obtain the Helm cha
    helm repo update
    helm upgrade --install -n <namespace> --create-namespace llm-operator llm-operator/llm-operator -f <values.yaml>
 
+
+Once installation completes, you can interact with the API endpoint using the `OpenAI Python library <https://github.com/openai/openai-python>`_., running our CLI,
+or direclty hitting the endpoint.
+
 The next tutorial section goes through an example installation to a `Kind <https://kind.sigs.k8s.io/>`_ cluster
 running on an EC2 instance.
