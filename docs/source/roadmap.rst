@@ -18,15 +18,15 @@ Milestone 1 (Completed)
 Milestone 2 (In-progress)
 -------------------------
 
-- [ ] Dynamic model loading & offloading in inference
 - [ ] Orginization management
+- [ ] Dynamic model loading & offloading in inference
 - [ ] Jupyter Notebook workspace creation
-- [ ] MLflow integration
 - [ ] Events and metrics for fine-tuning jobs
 - [ ] More models
+- [ ] MLflow integration
+- [ ] Object store other than MinIO
 - [ ] Installation doc for Keda and Kuque
 - [ ] Monitoring & alerting
-
 
 Milestone 3
 -----------
@@ -35,7 +35,6 @@ Milestone 3
 - [ ] GPU showback
 - [ ] Multi-GPU fine-tuning jobs
 - [ ] Frontend
-- [ ] Multi-k8s-cluster deployment
+- [ ] Multi k8s cluster deployment
 - [ ] VectorDB installation
 - [ ] Postgres installation with high availabiilty
-- [ ] Object store other than MinIO
