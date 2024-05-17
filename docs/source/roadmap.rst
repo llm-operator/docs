@@ -33,6 +33,7 @@ Milestone 3
 
 - [ ] Inference optimization (e.g., vLLM)
 - [ ] GPU showback
+- [ ] Non-Nvidia GPU support
 - [ ] Multi-GPU fine-tuning jobs
 - [ ] Frontend
 - [ ] Multi k8s cluster deployment
