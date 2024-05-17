@@ -100,7 +100,7 @@ and obtain the API key.
 
    # Download the binary.
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.26.0/"${ARCH}"/llmo
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.27.0/"${ARCH}"/llmo
    chmod u+x ./llmo
 
    # Login. Please see below for the details.
@@ -111,7 +111,7 @@ and obtain the API key.
 
 
 ``llmo auth login`` will ask for the endpoint URL and the issuer URL. Please use the default values for them
-(``http://localhost:8080/v1`` and ``http://kong-kong-proxy.kong/v1/dex``).
+(``http://localhost:8080/v1`` and ``http://kong-proxy.kong/v1/dex``).
 
 Then the command will open a web browser to login. Please use the following username and the password.
 
