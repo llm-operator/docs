@@ -91,7 +91,7 @@ with the following command:
 
 
 Step 5: Obtain an API Key
-------------------------
+-------------------------
 
 To access LLM service, you need an API key. You can download the LLM Operator CLI and use that to login the system,
 and obtain the API key.

@@ -11,4 +11,4 @@ Build a Document locally
    pip install sphinx
    pip install sphinx-rtd-theme
    make -C docs html
-   open build/html
+   open docs/build/html
