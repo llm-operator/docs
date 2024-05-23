@@ -18,12 +18,12 @@ Milestone 1 (Completed)
 Milestone 2 (In-progress)
 -------------------------
 
-- [ ] Organization management
+- [X] Organization & project management
+- [X] MLflow integration
 - [ ] Dynamic model loading & offloading in inference
 - [ ] Jupyter Notebook workspace creation
 - [ ] Events and metrics for fine-tuning jobs
 - [ ] More models
-- [ ] MLflow integration
 - [ ] Object store other than MinIO
 - [ ] Installation doc for KEDA and Kueue
 - [ ] Monitoring & alerting
