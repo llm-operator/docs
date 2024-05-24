@@ -43,5 +43,6 @@ Contents
    getting_started
    tutorial
    fine_tuning
+   access_control
    integrations
    roadmap
