@@ -42,5 +42,6 @@ Contents
 
    getting_started
    tutorial
+   fine_tuning
    integrations
    roadmap
