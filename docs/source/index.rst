@@ -44,5 +44,6 @@ Contents
    tutorial
    fine_tuning
    access_control
+   architecture
    integrations
    roadmap
