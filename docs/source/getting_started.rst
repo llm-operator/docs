@@ -31,5 +31,14 @@ We provide a Helm chart for installing LLM Operator. You can obtain the Helm cha
 Once installation completes, you can interact with the API endpoint using the `OpenAI Python library <https://github.com/openai/openai-python>`_., running our CLI,
 or direclty hitting the endpoint.
 
+You can also download the CLI and use it.
+
+.. code-block:: console
+
+   export ARCH=<e.g., linux-amd64, darwin-arm64>
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.50.0/"${ARCH}"/llmo
+   chmod u+x ./llmo
+
+
 The next tutorial section goes through an example installation to a `Kind <https://kind.sigs.k8s.io/>`_ cluster
 running on an EC2 instance.
