@@ -122,8 +122,8 @@ You can use `llmo context set` to set the current context.
 
 .. code-block:: console
 
-   llmo context set organization <organization title>
-   llmo context set project <project title>
+   llmo context set
+
 
 Then the selected context is applied to CLI commands (e.g., ``llmo models list``).
 
@@ -132,8 +132,7 @@ a user runs the following commands:
 
 .. code-block:: console
 
-   llmo context set organization my-org
-   llmo context set project my-project
+   llmo context set # Choose project my-project
    llmo auth api-keys create --name my-key
 
 The newly created API key is associated with project ``my-project``.
