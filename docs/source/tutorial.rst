@@ -51,7 +51,7 @@ First create a ``local.tfvars`` file for your deployment. Here is an example.
    ssh_ip_range     = "<ingress CIDR block for SSH (default: "0.0.0.0/0")>"
 
 
-``profile` is an AWS profile that is used to create an EC2 instance. ``public_key_path`` and ``private_key_path`` specify
+``profile`` is an AWS profile that is used to create an EC2 instance. ``public_key_path`` and ``private_key_path`` specify
 an SSH key used to access the EC2 instance.
 
 .. note::
