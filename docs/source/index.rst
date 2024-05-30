@@ -43,6 +43,7 @@ Contents
    getting_started
    tutorial
    fine_tuning
+   jupyter_notebook
    user_management
    access_control
    architecture
