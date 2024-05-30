@@ -140,8 +140,14 @@ Step 6: Interact with the LLM Service
 
 There are mainly three ways to interact with the LLM service.
 
-The first option is to run the ``curl`` command and hit the API endpoint.
-Here is an example command for listing all available models and hitting the chat endpoint.
+The first option is to use the CLI. Here are examle commands:
+
+.. code-block:: console
+
+   ./llmo models list
+
+   ./llmo chat completions create --model google-gemma-2b-it-q4 --role user --completion "What is k8s?"
+
 
 .. code-block:: console
 
@@ -155,15 +161,8 @@ Here is an example command for listing all available models and hitting the chat
      --data '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
      http://localhost:8080/v1/chat/completions
 
-
-The second option is to use the CLI. Here are examle commands:
-
-.. code-block:: console
-
-   llmo models list
-
-   llmo chat completions create --model google-gemma-2b-it-q4 --role user --completion "What is k8s?"
-
+The second option is to run the ``curl`` command and hit the API endpoint.
+Here is an example command for listing all available models and hitting the chat endpoint.
 
 The third option is to use Python. Here is an example Python code for hitting the chat endpoint.
 
