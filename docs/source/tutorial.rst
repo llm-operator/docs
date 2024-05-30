@@ -177,10 +177,11 @@ The third option is to use Python. Here is an example Python code for hitting th
      model="google-gemma-2b-it-q4",
      messages=[
        {"role": "user", "content": "What is k8s?"}
-     ]
+     ],
+     stream=True
    )
-   print(completion.choices[0].message)
-
+   for response in completion:
+     print(response.choices[0].delta.content, end="")
 
 We have a Jupyter Notebook that goes through all the functionalites. Please download the Notebook
 from https://github.com/llm-operator/llm-operator/blob/main/tutorial/getting_started.ipynb to play around it.
