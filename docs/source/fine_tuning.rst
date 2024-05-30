@@ -55,9 +55,8 @@ Then you can get the model ID and use that for the chat completion request.
 
 .. code-block:: python
 
-   model_id = fine_tuned_model[3:]  # Remove the "ft:" prefix. This follows OpenAI convention.
    completion = client.chat.completions.create(
-     model=model_id,
+     model=fine_tuned_model,
      ...
 
 
