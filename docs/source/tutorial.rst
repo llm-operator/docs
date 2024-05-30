@@ -65,8 +65,12 @@ Then, run the following Terraform commands to initialize and create an EC2 insta
    terraform init
    terraform apply -var-file=local.tfvars
 
+.. note::
 
-If you want to run only Ansible playbook, you can just run ``ansible-playbook -i inventory.ini playbook.yml``.
+   If you want to run only Ansible playbook, you can just run ``ansible-playbook -i inventory.ini playbook.yml``.
+
+Once the deployment completes, a Kind cluster is built in the EC2 instance and LLM Operator is running in the cluster. 
+It will take another about five minutes for LLM Operator to load base models, but you can move to the next step meanwhile.
 
 
 Step 4: Set up SSH Connection
