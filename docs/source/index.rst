@@ -42,6 +42,7 @@ Contents
 
    getting_started
    tutorial
+   inference
    fine_tuning
    jupyter_notebook
    user_management

@@ -1,0 +1,63 @@
+Inference with Open Models
+==========================
+
+.. note::
+
+   Work-in-progress.
+
+Users can run chat completion with open models such as Google Gemma,
+LLama, Mistral, etc. To run chat completion, users can use the OpenAI
+Python library, ``llmo`` CLI, or API endpoint.
+
+
+Here is an example chat completion command with the ``llmo`` CLI.
+
+.. code-block:: console
+
+
+   llmo chat completions create --model google-gemma-2b-it-q4 --role user --completion "What is k8s?"
+
+
+If you want to use the Python library, you first need to create an API key:
+
+.. code-block:: console
+
+   llmo auth api-keys create --name <key name>
+
+
+You can then pass the API key to initialize the OpenAI client and run the completion:
+
+.. code-block:: console
+
+   from openai import OpenAI
+
+   client = OpenAI(
+     base_url="<Base URL (e.g., http://localhost:8080/v1)>",
+     api_key="<API key secret>"
+   )
+
+   completion = client.chat.completions.create(
+     model="google-gemma-2b-it-q4",
+     messages=[
+       {"role": "user", "content": "What is k8s?"}
+     ],
+     stream=True
+   )
+   for response in completion:
+     print(response.choices[0].delta.content, end="")
+
+
+You can also just call `client = OpenAI()` if you set environment variables ``OPENAI_BASE_URL`` and ``OPENAI_API_KEY``.
+
+If you want to hit the API endpoint directly, you can use ``curl``. Here is an example.
+
+.. code-block:: console
+
+   curl \
+     --request POST \
+     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --data '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
+     http://localhost:8080/v1/chat/completions
+
+
+Please see `the fine-tuning page <./fine_tuning.html>`_ if you want to generate a fine-tuning model and use that for chat completion.
