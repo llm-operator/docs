@@ -20,7 +20,7 @@ Milestone 2 (In-progress)
 
 - [X] Organization & project management
 - [X] MLflow integration
-- [ ] Dynamic model loading & offloading in inference
+- [X] Dynamic model loading & offloading in inference (initial version)
 - [ ] Jupyter Notebook workspace creation
 - [ ] Events and metrics for fine-tuning jobs
 - [ ] More models
