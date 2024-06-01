@@ -69,7 +69,7 @@ Then, run the following Terraform commands to initialize and create an EC2 insta
 
    If you want to run only Ansible playbook, you can just run ``ansible-playbook -i inventory.ini playbook.yml``.
 
-Once the deployment completes, a Kind cluster is built in the EC2 instance and LLM Operator is running in the cluster. 
+Once the deployment completes, a Kind cluster is built in the EC2 instance and LLM Operator is running in the cluster.
 It will take another about five minutes for LLM Operator to load base models, but you can move to the next step meanwhile.
 
 
@@ -108,7 +108,7 @@ and obtain the API key.
 
    # Download the binary.
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.69.0/"${ARCH}"/llmo
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.78.0/"${ARCH}"/llmo
    chmod u+x ./llmo
 
    # Login. Please see below for the details.
