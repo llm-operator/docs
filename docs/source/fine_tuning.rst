@@ -23,12 +23,12 @@ that uploads a training file and uses that to run a fine-tuning job.
      purpose='fine-tune',
    )
 
-   resp = client.fine_tuning.jobs.create(
+   job = client.fine_tuning.jobs.create(
      model="google-gemma-2b-it",
      suffix='fine-tuning',
      training_file=file.id,
    )
-   print('Created job. ID=%s' % resp.id)
+   print('Created job. ID=%s' % job.id)
 
 Once a fine-tuning job is submitted, a k8s Job is created. A Job runs in a namespace where a user's project is associated.
 
@@ -48,7 +48,7 @@ Once the job completes, you can check the generated models.
 
 .. code-block:: python
 
-   fine_tuned_model = client.fine_tuning.jobs.list().data[-1].fine_tuned_model
+   fine_tuned_model = client.fine_tuning.jobs.list().data[0].fine_tuned_model
    print(fine_tuned_model)
 
 Then you can get the model ID and use that for the chat completion request.
