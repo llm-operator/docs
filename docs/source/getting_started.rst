@@ -36,7 +36,7 @@ You can also download the CLI and use it.
 .. code-block:: console
 
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.78.0/"${ARCH}"/llmo
+   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.79.0/"${ARCH}"/llmo
    chmod u+x ./llmo
 
 

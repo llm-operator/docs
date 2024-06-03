@@ -41,7 +41,7 @@ You can check the status of the job with the Python script or the `llmo` CLI.
 .. code-block:: console
 
    llmo fine-tuning jobs list
-   llmo fine-tuning jobs get --id <job-id>
+   llmo fine-tuning jobs get <job-id>
 
 
 Once the job completes, you can check the generated models.
@@ -67,8 +67,8 @@ You can use the `llmo` CLI to check the logs and exec into the pod.
 
 .. code-block:: console
 
-   llmo fine-tuning jobs logs --id <job-id>
-   llmo fine-tuning jobs exec --id <job-id>
+   llmo fine-tuning jobs logs <job-id>
+   llmo fine-tuning jobs exec <job-id>
 
 
 Managing Quota
