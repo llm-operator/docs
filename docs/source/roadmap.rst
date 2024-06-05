@@ -21,8 +21,9 @@ Milestone 2 (In-progress)
 - [X] Organization & project management
 - [X] MLflow integration
 - [X] Dynamic model loading & offloading in inference (initial version)
-- [ ] Jupyter Notebook workspace creation
+- [X] Jupyter Notebook workspace creation
 - [ ] Events and metrics for fine-tuning jobs
+- [ ] Multi k8s cluster deployment
 - [ ] More models
 - [ ] Object store other than MinIO
 - [ ] Installation doc for KEDA and Kueue
@@ -36,6 +37,5 @@ Milestone 3
 - [ ] Non-Nvidia GPU support
 - [ ] Multi-GPU fine-tuning jobs
 - [ ] Frontend
-- [ ] Multi k8s cluster deployment
 - [ ] VectorDB installation
 - [ ] Postgres installation with high availability
