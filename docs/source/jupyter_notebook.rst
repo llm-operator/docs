@@ -87,3 +87,7 @@ Now, you can use OpenAI API in the Jupyter Notebook. Here is an example of using
      print(response.choices[0].delta.content, end="")
 
 .. image:: images/jupyter_notebook_ipynb.png
+
+.. note::
+
+   By default, pre-configured API key is a JWT token and it can expire. You can also pass your API key to the `OpenAI` client.
