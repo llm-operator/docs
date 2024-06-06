@@ -129,6 +129,8 @@ You can save it locally, up ``openai_api_base`` in the ``ConfigMap`` definition 
 
 You can then access the MLflow Tracking Server, click "New run", and choose "using Prompt Engineering".
 
+.. image:: images/mlflow.png
+
 
 Other Features
 ^^^^^^^^^^^^^^
