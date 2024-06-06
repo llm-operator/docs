@@ -15,9 +15,9 @@ LLM Operator provisions the LLM stack consisting of the following micro services
 - Model Manager
 - File Manager
 - User Manager
+- Cluster Manager
 - Session Manager
 - RBAC Manager
-
 
 Each manager is responsible for the specific feature of LLM services as their names indicate. The following diagram shows the high-level
 architecture:
