@@ -20,12 +20,12 @@ that uploads a training file and uses that to run a fine-tuning job.
 
    file = client.files.create(
      file=open(training_filename, "rb"),
-     purpose='fine-tune',
+     purpose="fine-tune",
    )
 
    job = client.fine_tuning.jobs.create(
      model="google-gemma-2b-it",
-     suffix='fine-tuning',
+     suffix="fine-tuning",
      training_file=file.id,
    )
    print('Created job. ID=%s' % job.id)

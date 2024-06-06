@@ -18,16 +18,13 @@ Milestone 1 (Completed)
 Milestone 2 (In-progress)
 -------------------------
 
+- [X] Jupyter Notebook workspace creation
+- [X] Dynamic model loading & offloading in inference (initial version)
 - [X] Organization & project management
 - [X] MLflow integration
 - [X] Weights & Biases integration for fine-tuning jobs
-- [X] Dynamic model loading & offloading in inference (initial version)
-- [X] Jupyter Notebook workspace creation
 - [ ] VectorDB installation and RAG
 - [ ] Multi k8s cluster deployment
-- [ ] More models
-- [ ] Object store other than MinIO
-- [ ] Monitoring & alerting
 
 Milestone 3
 -----------
@@ -38,4 +35,7 @@ Milestone 3
 - [ ] Non-Nvidia GPU support
 - [ ] Multi-GPU fine-tuning jobs
 - [ ] Frontend
+- [ ] More models
 - [ ] Postgres installation with high availability
+- [ ] Object store other than MinIO
+- [ ] Monitoring & alerting
