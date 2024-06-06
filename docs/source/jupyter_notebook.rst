@@ -74,7 +74,7 @@ Now, you can use OpenAI API in the Jupyter Notebook. Here is an example of using
 .. code-block:: python
 
    from openai import OpenAI
-   
+
    client = OpenAI()
    completion = client.chat.completions.create(
      model="google-gemma-2b-it-q4",

@@ -1,10 +1,6 @@
 Inference with Open Models
 ==========================
 
-.. note::
-
-   Work-in-progress.
-
 Users can run chat completion with open models such as Google Gemma,
 LLama, Mistral, etc. To run chat completion, users can use the OpenAI
 Python library, ``llmo`` CLI, or API endpoint.
@@ -27,7 +23,7 @@ If you want to use the Python library, you first need to create an API key:
 
 You can then pass the API key to initialize the OpenAI client and run the completion:
 
-.. code-block:: console
+.. code-block:: python
 
    from openai import OpenAI
 
