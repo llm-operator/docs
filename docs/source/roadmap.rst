@@ -20,13 +20,13 @@ Milestone 2 (In-progress)
 
 - [X] Organization & project management
 - [X] MLflow integration
+- [X] Weights & Biases integration for fine-tuning jobs
 - [X] Dynamic model loading & offloading in inference (initial version)
 - [X] Jupyter Notebook workspace creation
-- [ ] Events and metrics for fine-tuning jobs
+- [ ] VectorDB installation and RAG
 - [ ] Multi k8s cluster deployment
 - [ ] More models
 - [ ] Object store other than MinIO
-- [ ] Installation doc for KEDA and Kueue
 - [ ] Monitoring & alerting
 
 Milestone 3
@@ -34,8 +34,8 @@ Milestone 3
 
 - [ ] Inference optimization (e.g., vLLM)
 - [ ] GPU showback
+- [ ] Events and metrics for fine-tuning jobs
 - [ ] Non-Nvidia GPU support
 - [ ] Multi-GPU fine-tuning jobs
 - [ ] Frontend
-- [ ] VectorDB installation
 - [ ] Postgres installation with high availability
