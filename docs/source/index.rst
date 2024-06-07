@@ -9,7 +9,7 @@ Welcome to LLM Operator documentation!
    </p>
 
    <p style="text-align:center">
-   <strong>Convert your GPU clusters to a platform for generative AI workloads</strong>
+   <strong>Transform your GPU clusters into a powerhouse for generative AI workloads</strong>
    </p>
 
 
