@@ -29,6 +29,10 @@ An organization role is either ``owner`` or ``reader``. A project role is either
 to use LLM Operator without any organization/project management privilege, you can grant the organization role ``reader`` and the project role ``member``.
 If you want to allow a user to manage the project, you can grant the project role ``owner``.
 
+Here is an diagram shows an example role assignment.
+
+.. image:: images/org_and_project.png
+
 The following summarizes how these role implements the access control:
 
 - A user can access resources in project `P` in organization `O` if the user is a ``member`` of `P`, ``owner`` of `P`, or ``owner`` of `O`.
@@ -38,6 +42,7 @@ The following summarizes how these role implements the access control:
 
 Please note that a user who has organization role ``reader`` role cannot access resources in the organization unless the user is
 added to a project in the organization.
+
 
 
 Creating Organizations and Projects
