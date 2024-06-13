@@ -23,10 +23,15 @@ We provide a Helm chart for installing LLM Operator. You can obtain the Helm cha
 
 .. code-block:: console
 
-   helm repo add llm-operator http://llm-operator-charts.s3-website-us-west-2.amazonaws.com/
-   helm repo update
-   helm upgrade --install -n <namespace> --create-namespace llm-operator llm-operator/llm-operator -f <values.yaml>
+   helm upgrade --install \
+       --namespace <namespace> --create-namespace \
+       --values <values.yaml> \
+       llm-operator oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator
 
+.. note::
+
+   Starting from Helm v3.8.0, the OCI registry is supported by default. If you are using an older version, please upgrade to v3.8.0 or later.
+   For more details, please refer to `Helm OCI-based registries <https://helm.sh/docs/topics/registries/>`_.
 
 Once installation completes, you can interact with the API endpoint using the `OpenAI Python library <https://github.com/openai/openai-python>`_., running our CLI,
 or direclty hitting the endpoint.
