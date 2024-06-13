@@ -43,10 +43,12 @@ Contents
    getting_started
    tutorial
    inference
+   rag
    fine_tuning
    jupyter_notebook
    user_management
    access_control
    architecture
+   multi_cluster_deployment
    integrations
    roadmap

@@ -1,10 +1,6 @@
 Architecture
 ============
 
-.. note::
-
-   Work-in-progress.
-
 Components
 ----------
 
@@ -68,14 +64,3 @@ to the `agent` using one of the established connections. Then the `agent` forwar
 This architecture enables the deployment where the `server` and the `agent` can run in separate Kubernetes clusters. As
 the `agent` initiates a connection (not the `server`), there is no need to open incoming traffic at the cluster where the `agent` runs.
 An ingress controller is still the only place where incoming traffic is sent.
-
-
-Multi-Cluster Deployment
-------------------------
-
-LLM Operator deploys Kubernetes deployments to provision the LLM
-stack. In a typical configuration, all the services are deployed into
-a single Kubernetes cluster, but you can also deploy these services on
-multiple Kubernetes clusters. For example, you can deploy a control
-plane component in a CPU K8s cluster and deploy the rest of the
-components in GPU compute clusters.
