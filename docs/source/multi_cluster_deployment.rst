@@ -12,7 +12,23 @@ multiple Kubernetes clusters. For example, you can deploy a control
 plane component in a CPU K8s cluster and deploy the rest of the
 components in GPU compute clusters.
 
-TODO: Describe how to deploy a control plane.
+
+Deploying Control Plane Components
+----------------------------------
+
+You can deploy only Control Plane components by setting ``tags.worker=false``:
+
+.. code-block:: console
+
+   helm upgrade --install \
+     --namespace <namespace> --create-namespace \
+      --values <values.yaml> \
+      --settags.worker=false  \
+      llm-operator oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator
+
+
+Deploying Worker Components
+---------------------------
 
 To deploy LLM Operator to a worker GPU cluster, you first need to obtain a registration key for the cluster.
 
