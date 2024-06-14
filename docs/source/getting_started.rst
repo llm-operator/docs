@@ -33,6 +33,11 @@ We provide a Helm chart for installing LLM Operator. You can obtain the Helm cha
    Starting from Helm v3.8.0, the OCI registry is supported by default. If you are using an older version, please upgrade to v3.8.0 or later.
    For more details, please refer to `Helm OCI-based registries <https://helm.sh/docs/topics/registries/>`_.
 
+.. note::
+
+   If you are getting a 403 forbidden error, please try ``docker logout public.ecr.aws``. Please see `AWS document <https://docs.aws.amazon.com/AmazonECR/latest/public/public-troubleshooting.html>`_ for more details.
+
+
 Once installation completes, you can interact with the API endpoint using the `OpenAI Python library <https://github.com/openai/openai-python>`_., running our CLI,
 or direclty hitting the endpoint.
 
