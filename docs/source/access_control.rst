@@ -57,7 +57,7 @@ You can run the following command to create a new organization.
 
 .. code-block:: console
 
-   llmo auth organizations create --title <organization title>
+   llmo auth organizations create <organization title>
 
 .. note::
 
@@ -73,7 +73,7 @@ Then you can add a user member to the organization.
 
 .. code-block:: console
 
-   llmo auth organizations add-member --title <organization title> --email <email-address of the member> --role <role>
+   llmo auth organizations add-member <organization title> --email <email-address of the member> --role <role>
 
 The role can be either ``owner`` or ``reader``.
 
@@ -81,7 +81,7 @@ You can confirm organization members by running:
 
 .. code-block:: console
 
-   llmo auth organizations list-members --title <organization title>
+   llmo auth organizations list-members <organization title>
 
 
 Creating a new Project
@@ -97,13 +97,13 @@ To confirm the project is created, run:
 
 .. code-block:: console
 
-   llmo auth projects list --organization-title <organization title>
+   llmo auth projects list
 
 Then you can add a user member to the project.
 
 .. code-block:: console
 
-   llmo auth projects add-member --title <project title> --organization-title <organization title> --email <email-address of the member> --role <role>
+   llmo auth projects add-member <project title> --email <email-address of the member> --role <role>
 
 The role can be either ``owner`` or ``member``.
 
@@ -113,11 +113,12 @@ You can confirm project members by running:
 
    llmo auth projects list-members --title <project title> --organization-title <organization title>
 
-If you want to avoid setting ``--organization-title`` in each command, you can set the current context by running the following command:
+If you want to manage a project in a different organization, you can pass ``--organization-title <title>`` in each command. Otherwise, the
+organization in the current context is used. You can also change the current context by running:
 
 .. code-block:: console
 
-   llmo context set organization <organization title>
+   llmo context set
 
 
 Choosing an Organization and a Project
@@ -138,6 +139,6 @@ a user runs the following commands:
 .. code-block:: console
 
    llmo context set # Choose project my-project
-   llmo auth api-keys create --name my-key
+   llmo auth api-keys create my-key
 
 The newly created API key is associated with project ``my-project``.
