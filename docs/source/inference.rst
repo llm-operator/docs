@@ -18,7 +18,7 @@ If you want to use the Python library, you first need to create an API key:
 
 .. code-block:: console
 
-   llmo auth api-keys create --name <key name>
+   llmo auth api-keys create <key name>
 
 
 You can then pass the API key to initialize the OpenAI client and run the completion:
