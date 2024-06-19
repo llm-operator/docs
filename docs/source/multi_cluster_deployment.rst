@@ -20,11 +20,14 @@ You can deploy only Control Plane components by setting ``tags.worker=false``:
 
 .. code-block:: console
 
-   helm upgrade --install \
-     --namespace <namespace> --create-namespace \
-      --values <values.yaml> \
-      --settags.worker=false  \
-      llm-operator oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator
+   helm upgrade \
+     --install \
+     --create-namespace \
+     --namespace <namespace> \
+     llm-operator \
+     oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator \
+     --values <values.yaml> \
+     --set tags.worker=false
 
 
 Deploying Worker Components
@@ -64,3 +67,16 @@ When installing the Helm chart for the worker components, you need to specify th
     registrationKeySecret:
       name: cluster-registration-key
       key: regKey
+
+``tags.worker=true` also need to be set:
+
+.. code-block:: console
+
+   helm upgrade \
+     --install \
+     --create-namespace \
+     --namespace <namespace> \
+     llm-operator \
+     oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator \
+     --values <values.yaml> \
+     --set tags.control-plane=false
