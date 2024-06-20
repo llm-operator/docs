@@ -57,7 +57,7 @@ You can run the following command to create a new organization.
 
 .. code-block:: console
 
-   llmo auth organizations create <organization title>
+   llmo admin organizations create <organization title>
 
 .. note::
 
@@ -67,13 +67,13 @@ You can confirm that the new organization is created by running:
 
 .. code-block:: console
 
-   llmo auth organizations list
+   llmo admin organizations list
 
 Then you can add a user member to the organization.
 
 .. code-block:: console
 
-   llmo auth organizations add-member <organization title> --email <email-address of the member> --role <role>
+   llmo admin organizations add-member <organization title> --email <email-address of the member> --role <role>
 
 The role can be either ``owner`` or ``reader``.
 
@@ -81,7 +81,7 @@ You can confirm organization members by running:
 
 .. code-block:: console
 
-   llmo auth organizations list-members <organization title>
+   llmo admin organizations list-members <organization title>
 
 
 Creating a new Project
@@ -91,19 +91,19 @@ You can take a similar flow to create a new project. To create a new project, ru
 
 .. code-block:: console
 
-   llmo auth projects create --title <project title> --organization-title <organization title>
+   llmo admin projects create --title <project title> --organization-title <organization title>
 
 To confirm the project is created, run:
 
 .. code-block:: console
 
-   llmo auth projects list
+   llmo admin projects list
 
 Then you can add a user member to the project.
 
 .. code-block:: console
 
-   llmo auth projects add-member <project title> --email <email-address of the member> --role <role>
+   llmo admin projects add-member <project title> --email <email-address of the member> --role <role>
 
 The role can be either ``owner`` or ``member``.
 
@@ -111,7 +111,7 @@ You can confirm project members by running:
 
 .. code-block:: console
 
-   llmo auth projects list-members --title <project title> --organization-title <organization title>
+   llmo admin projects list-members --title <project title> --organization-title <organization title>
 
 If you want to manage a project in a different organization, you can pass ``--organization-title <title>`` in each command. Otherwise, the
 organization in the current context is used. You can also change the current context by running:

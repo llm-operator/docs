@@ -37,7 +37,7 @@ To deploy LLM Operator to a worker GPU cluster, you first need to obtain a regis
 
 .. code-block:: console
 
-   llmo clusters register <cluster-name>
+   llmo admin clusters register <cluster-name>
 
 
 The command generates a new registration key.
@@ -68,7 +68,7 @@ When installing the Helm chart for the worker components, you need to specify th
       name: cluster-registration-key
       key: regKey
 
-``tags.worker=true` also need to be set:
+``tags.worker=true`` also need to be set:
 
 .. code-block:: console
 
