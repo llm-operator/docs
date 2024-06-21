@@ -46,6 +46,7 @@ Contents
    rag
    fine_tuning
    jupyter_notebook
+   gpu_showback
    user_management
    access_control
    architecture
