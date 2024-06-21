@@ -1,5 +1,5 @@
-Multi-Cluster Deployment
-========================
+Multi-Cluster Deployment and Federation
+=======================================
 
 .. note::
 
@@ -68,7 +68,7 @@ When installing the Helm chart for the worker components, you need to specify th
       name: cluster-registration-key
       key: regKey
 
-``tags.worker=true`` also need to be set:
+``tags.control-plane=false`` also need to be set:
 
 .. code-block:: console
 
