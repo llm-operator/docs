@@ -10,6 +10,7 @@ LLM Operator provisions the LLM stack consisting of the following micro services
 - Job Manager
 - Model Manager
 - File Manager
+- Vector Store Server
 - User Manager
 - Cluster Manager
 - Session Manager
@@ -27,6 +28,7 @@ LLM Operator has dependency to the following components:
 - SQL database
 - S3-compatible object store
 - `Dex <https://github.com/dexidp/dex>`_
+- `Milvus <https://milvus.io/>`_
 
 Ingress controller is required to route traffic to each service. SQL database and S3-compatible object store
 are used to persist metadata (e.g., fine-tuning jobs), fine-tuned models, and training/validation files.
