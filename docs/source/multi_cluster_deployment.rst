@@ -1,5 +1,5 @@
-Multi-Cluster Deployment and Federation
-=======================================
+Multi-Cluster and Cloud Deployment
+==================================
 
 .. note::
 
