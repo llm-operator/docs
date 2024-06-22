@@ -39,6 +39,11 @@ To deploy LLM Operator to a worker GPU cluster, you first need to obtain a regis
 
    llmo admin clusters register <cluster-name>
 
+The following is an example command that sets the registration key to the environment variable.
+
+.. code-block:: console
+
+   REGISTRATION_KEY=$(llmo admin clusters register <cluster-name> | sed -n 's/.*Registration Key: "\([^"]*\)".*/\1/p')
 
 The command generates a new registration key.
 
