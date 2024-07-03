@@ -1,5 +1,5 @@
-Multi-Cluster and Cloud Deployment
-==================================
+Multi-Cluster and Multi-Cloud Deployment
+========================================
 
 .. note::
 
