@@ -24,12 +24,13 @@ Milestone 2 (In-progress)
 - [X] MLflow integration
 - [X] Weights & Biases integration for fine-tuning jobs
 - [ ] VectorDB installation and RAG
-- [ ] Multi k8s cluster deployment
+- [X] Multi k8s cluster deployment (initial version)
 
 Milestone 3
 -----------
 
 - [ ] Inference optimization (e.g., vLLM)
+- [ ] Multi k8s cluster deployment (file and vector store management)
 - [ ] GPU showback
 - [ ] Events and metrics for fine-tuning jobs
 - [ ] Non-Nvidia GPU support
