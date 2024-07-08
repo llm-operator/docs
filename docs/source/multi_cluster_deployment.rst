@@ -25,7 +25,7 @@ You can deploy only Control Plane components by setting ``tags.worker=false``:
      --create-namespace \
      --namespace <namespace> \
      llm-operator \
-     oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator \
+     oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
      --values <values.yaml> \
      --set tags.worker=false
 
@@ -82,6 +82,6 @@ When installing the Helm chart for the worker components, you need to specify th
      --create-namespace \
      --namespace <namespace> \
      llm-operator \
-     oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator \
+     oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
      --values <values.yaml> \
      --set tags.control-plane=false

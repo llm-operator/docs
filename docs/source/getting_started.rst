@@ -26,7 +26,7 @@ We provide a Helm chart for installing LLM Operator. You can obtain the Helm cha
    helm upgrade --install \
        --namespace <namespace> --create-namespace \
        --values <values.yaml> \
-       llm-operator oci://public.ecr.aws/v8n3t7y5/llm-operator-charts/llm-operator
+       llm-operator oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator
 
 .. note::
 
