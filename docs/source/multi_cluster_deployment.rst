@@ -1,10 +1,6 @@
 Multi-Cluster and Multi-Cloud Deployment
 ========================================
 
-.. note::
-
-   Work-in-progress.
-
 LLM Operator deploys Kubernetes deployments to provision the LLM
 stack. In a typical configuration, all the services are deployed into
 a single Kubernetes cluster, but you can also deploy these services on
@@ -73,7 +69,7 @@ When installing the Helm chart for the worker components, you need to specify th
       name: cluster-registration-key
       key: regKey
 
-``tags.control-plane=false`` also need to be set:
+``tags.control-plane=false`` also needs to be set:
 
 .. code-block:: console
 
@@ -85,3 +81,5 @@ When installing the Helm chart for the worker components, you need to specify th
      oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
      --values <values.yaml> \
      --set tags.control-plane=false
+
+Please see `this GitHub repository <https://github.com/llm-operator/llm-operator/tree/main/hack/multi-cluster>`_ for an example setup.
