@@ -168,12 +168,12 @@ The third option is to use Python. Here is an example Python code for hitting th
 
 .. code-block:: python
 
-   from os
+   from os import environ
    from openai import OpenAI
 
    client = OpenAI(
      base_url="http://localhost:8080/v1",
-     api_key=os.environ["LLM_OPERATOR_TOKEN"]
+     api_key=environ["LLM_OPERATOR_TOKEN"]
    )
 
    completion = client.chat.completions.create(
