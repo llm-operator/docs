@@ -15,7 +15,7 @@ Milestone 1 (Completed)
 - [X] Inference autoscaling with GPU utilization
 - [X] Models: ``Mistral-7B-Instruct``, ``Meta-Llama-3-8B-Instruct``, and ``google-gemma-7b-it``
 
-Milestone 2 (In-progress)
+Milestone 2 (Completed)
 -------------------------
 
 - [X] Jupyter Notebook workspace creation
@@ -23,7 +23,7 @@ Milestone 2 (In-progress)
 - [X] Organization & project management
 - [X] MLflow integration
 - [X] Weights & Biases integration for fine-tuning jobs
-- [ ] VectorDB installation and RAG
+- [X] VectorDB installation and RAG
 - [X] Multi k8s cluster deployment (initial version)
 
 Milestone 3
