@@ -8,6 +8,9 @@ multiple Kubernetes clusters. For example, you can deploy a control
 plane component in a CPU K8s cluster and deploy the rest of the
 components in GPU compute clusters.
 
+LLM Operator can be deployed into multiple GPU clusters, and the clusters can span across multiple cloud providers (including
+GPU specific cloud like CoreWeave) and on-prem.
+
 
 Deploying Control Plane Components
 ----------------------------------
@@ -24,6 +27,23 @@ You can deploy only Control Plane components by setting ``tags.worker=false``:
      oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
      --values <values.yaml> \
      --set tags.worker=false
+
+
+In the ``values.yaml``, you need to set ``global.workerServiceIngress.create`` to ``true`` and other values so that
+an ingress and a service are created to receive requests from worker nodes.
+
+.. code-block:: yaml
+
+  global:
+    workerServiceGrpcService:
+      annotations:
+        konghq.com/protocol: grpc
+
+    workerServiceIngress:
+      create: true
+      ingressClassName: kong
+      annotations:
+        konghq.com/protocols: grpc,grpcs
 
 
 Deploying Worker Components
@@ -64,10 +84,11 @@ When installing the Helm chart for the worker components, you need to specify th
 
 .. code-block:: yaml
 
-  worker:
-    registrationKeySecret:
-      name: cluster-registration-key
-      key: regKey
+  global:
+    worker:
+      registrationKeySecret:
+        name: cluster-registration-key
+        key: regKey
 
 ``tags.control-plane=false`` also needs to be set:
 
