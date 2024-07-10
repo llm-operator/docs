@@ -11,6 +11,7 @@ components in GPU compute clusters.
 LLM Operator can be deployed into multiple GPU clusters, and the clusters can span across multiple cloud providers (including
 GPU specific cloud like CoreWeave) and on-prem.
 
+.. image:: images/multi_cluster.png
 
 Deploying Control Plane Components
 ----------------------------------
