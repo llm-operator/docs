@@ -29,7 +29,7 @@ You can deploy only Control Plane components by setting ``tags.worker=false``:
      --set tags.worker=false
 
 
-In the ``yalues.yaml``, you need to set ``global.workerServiceIngress.create`` to ``true`` and other values so that
+In the ``values.yaml``, you need to set ``global.workerServiceIngress.create`` to ``true`` and other values so that
 an ingress and a service are created to receive requests from worker nodes.
 
 .. code-block:: yaml
