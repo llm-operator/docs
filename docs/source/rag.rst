@@ -24,6 +24,10 @@ and create files in the vector store. Here is an example script:
    filename = "llm_operator_overview.txt"
    with open(filename, "w") as fp:
      fp.write("LLM Operator builds a software stack that provides LLM as a service. It provides the OpenAI-compatible API.")
+   file = client.files.create(
+     file=open(filename, "rb"),
+     purpose="assistants",
+   )
    print("Uploaded file. ID=%s" % file.id)
 
    vs = client.beta.vector_stores.create(
