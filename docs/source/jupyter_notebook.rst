@@ -85,6 +85,7 @@ Now, you can use OpenAI API in the Jupyter Notebook. Here is an example of using
    )
    for response in completion:
      print(response.choices[0].delta.content, end="")
+   print("\n")
 
 .. image:: images/jupyter_notebook_ipynb.png
 
