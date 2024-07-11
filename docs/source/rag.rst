@@ -77,6 +77,7 @@ Once the files are added into vector store, you can run the completion request w
    )
    for response in completion:
      print(response.choices[0].delta.content, end="")
+   print("\n")
 
 If you want to hit the API endpoint directly, you can use ``curl``. Here is an example.
 

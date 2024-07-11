@@ -41,7 +41,7 @@ You can then pass the API key to initialize the OpenAI client and run the comple
    )
    for response in completion:
      print(response.choices[0].delta.content, end="")
-
+   print("\n")
 
 You can also just call `client = OpenAI()` if you set environment variables ``OPENAI_BASE_URL`` and ``OPENAI_API_KEY``.
 

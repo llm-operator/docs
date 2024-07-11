@@ -185,6 +185,7 @@ The third option is to use Python. Here is an example Python code for hitting th
    )
    for response in completion:
      print(response.choices[0].delta.content, end="")
+   print("\n")
 
 We have a Jupyter Notebook that goes through all the functionalites. Please download the Notebook
 from https://github.com/llm-operator/llm-operator/blob/main/tutorial/getting_started.ipynb to play around it.
