@@ -1,16 +1,10 @@
 Retrieval-Augmented Generation (RAG)
 ====================================
 
-.. note::
+This page describes how to use RAG with LLM Operator.
 
-  This page describes how to use RAG with LLM Operator.
-
-Creating a Vector Store
------------------------
-
-You can use the OpenAI Python library to create a vector store
-and create files in the vector store. Here is an example script:
-
+The first step is to create a vector store and create files in the vector store.
+Here is an example script with the OpenAI Python library:
 
 .. code-block:: python
 
