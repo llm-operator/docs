@@ -91,4 +91,4 @@ Now, you can use OpenAI API in the Jupyter Notebook. Here is an example of using
 
 .. note::
 
-   By default, pre-configured API key is a JWT token and it can expire. You can also pass your API key to the `OpenAI` client.
+   By default, pre-configured API key is a JWT and it can expire. You can also pass your API key to the `OpenAI` client.
