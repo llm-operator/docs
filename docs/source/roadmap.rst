@@ -16,7 +16,7 @@ Milestone 1 (Completed)
 - [X] Models: ``Mistral-7B-Instruct``, ``Meta-Llama-3-8B-Instruct``, and ``google-gemma-7b-it``
 
 Milestone 2 (Completed)
--------------------------
+-----------------------
 
 - [X] Jupyter Notebook workspace creation
 - [X] Dynamic model loading & offloading in inference (initial version)
@@ -26,17 +26,21 @@ Milestone 2 (Completed)
 - [X] VectorDB installation and RAG
 - [X] Multi k8s cluster deployment (initial version)
 
-Milestone 3
------------
+Milestone 3 (In-progress)
+-------------------------
 
-- [ ] Inference optimization (e.g., vLLM)
-- [ ] Multi k8s cluster deployment (file and vector store management)
-- [ ] GPU showback
-- [ ] Events and metrics for fine-tuning jobs
+- [X] Object store other than MinIO
 - [ ] Non-Nvidia GPU support
 - [ ] Multi-GPU fine-tuning jobs
+- [ ] Inference optimization (e.g., vLLM)
 - [ ] Frontend
+- [ ] GPU showback
+
+Milestone 4
+-----------
+
+- [ ] Multi k8s cluster deployment (file and vector store management)
+- [ ] Events and metrics for fine-tuning jobs
 - [ ] More models
 - [ ] Postgres installation with high availability
-- [ ] Object store other than MinIO
 - [ ] Monitoring & alerting
