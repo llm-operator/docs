@@ -46,6 +46,7 @@ Contents
    rag
    fine_tuning
    jupyter_notebook
+   training
    gpu_showback
    user_management
    access_control
