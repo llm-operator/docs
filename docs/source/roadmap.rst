@@ -30,15 +30,17 @@ Milestone 3 (In-progress)
 -------------------------
 
 - [X] Object store other than MinIO
-- [ ] Non-Nvidia GPU support
-- [ ] Multi-GPU fine-tuning jobs
+- [X] Multi-GPU general-purpose training jobs
 - [ ] Inference optimization (e.g., vLLM)
 - [ ] Frontend
 - [ ] GPU showback
+- [ ] Models: ``Meta-Llama-3-8B-Instruct``, ``Meta-Llama-3-70B-Instruct``, ``deepseek-coder-6.7b-base``
 
 Milestone 4
 -----------
 
+- [ ] Non-Nvidia GPU support
+- [ ] Multi-GPU LLM fine-tuning jobs
 - [ ] Multi k8s cluster deployment (file and vector store management)
 - [ ] Events and metrics for fine-tuning jobs
 - [ ] More models
