@@ -6,7 +6,7 @@ LLM Operator allows users to run general-purpose training jobs in their Kubernet
 Creating a Training Job
 -----------------------
 
-You can create a training job from the local pytoarch code by running the following command.
+You can create a training job from the local pytorch code by running the following command.
 
 .. code-block:: console
 
@@ -33,10 +33,10 @@ You can use the `llmo` CLI to check the logs of a training job.
 
 .. code-block:: console
 
-   llmo fine-tuning jobs logs <job-id>
+   llmo batch jobs logs <job-id>
 
 
-TyTorch Distributed Data Parallel
+PyTorch Distributed Data Parallel
 ---------------------------------
 
 LLM Operator supports PyTorch Distributed Data Parallel (DDP) training. You can run a DDP training job by specifying the number of per-node GPUs and the number of workers in the ``--gpu`` and ``--workers`` flags, respectively.
