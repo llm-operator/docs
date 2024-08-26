@@ -80,6 +80,7 @@ If you want to hit the API endpoint directly, you can use ``curl``. Here is an e
    curl \
      --request POST \
      --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Content-Type: application/json" \
      --data '{
       "model": "google-gemma-2b-it-q4",
       "messages": [{"role": "user", "content": "What is LLM Operator?"}],

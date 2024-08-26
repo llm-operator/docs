@@ -153,11 +153,13 @@ The first option is to use the CLI. Here are examle commands:
 
    curl \
      --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Content-Type: application/json" \
      http://localhost:8080/v1/models | jq
 
    curl \
      --request POST \
      --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Content-Type: application/json" \
      --data '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
      http://localhost:8080/v1/chat/completions
 
