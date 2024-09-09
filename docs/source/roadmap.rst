@@ -26,23 +26,27 @@ Milestone 2 (Completed)
 - [X] VectorDB installation and RAG
 - [X] Multi k8s cluster deployment (initial version)
 
-Milestone 3 (In-progress)
--------------------------
+Milestone 3 (Completed)
+-----------------------
 
 - [X] Object store other than MinIO
 - [X] Multi-GPU general-purpose training jobs
-- [ ] Inference optimization (e.g., vLLM)
+- [X] Inference optimization (e.g., vLLM)
+- [X] Models: ``Meta-Llama-3-8B-Instruct``, ``Meta-Llama-3-70B-Instruct``, ``deepseek-coder-6.7b-base``
+
+Milestone 4 (In-progress)
+-------------------------
+
 - [ ] Frontend
 - [ ] GPU showback
-- [ ] Models: ``Meta-Llama-3-8B-Instruct``, ``Meta-Llama-3-70B-Instruct``, ``deepseek-coder-6.7b-base``
-
-Milestone 4
------------
-
 - [ ] Non-Nvidia GPU support
-- [ ] Multi-GPU LLM fine-tuning jobs
 - [ ] Multi k8s cluster deployment (file and vector store management)
-- [ ] Events and metrics for fine-tuning jobs
-- [ ] More models
 - [ ] Postgres installation with high availability
 - [ ] Monitoring & alerting
+- [ ] More models
+
+Milestone 5 (In-progress)
+-------------------------
+
+- [ ] Multi-GPU LLM fine-tuning jobs
+- [ ] Events and metrics for fine-tuning jobs
