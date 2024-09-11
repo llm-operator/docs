@@ -37,16 +37,17 @@ Milestone 3 (Completed)
 Milestone 4 (In-progress)
 -------------------------
 
+- [ ] Embedding API
+- [ ] High availability
 - [ ] Frontend
 - [ ] GPU showback
 - [ ] Non-Nvidia GPU support
 - [ ] Multi k8s cluster deployment (file and vector store management)
-- [ ] Postgres installation with high availability
 - [ ] Monitoring & alerting
 - [ ] More models
 
-Milestone 5 (In-progress)
--------------------------
+Milestone 5
+-----------
 
 - [ ] Multi-GPU LLM fine-tuning jobs
 - [ ] Events and metrics for fine-tuning jobs
