@@ -37,7 +37,7 @@ Milestone 3 (Completed)
 Milestone 4 (In-progress)
 -------------------------
 
-- [ ] Embedding API
+- [X] Embedding API
 - [ ] High availability
 - [ ] Frontend
 - [ ] GPU showback
