@@ -43,6 +43,7 @@ Contents
    getting_started
    tutorial
    inference
+   models
    rag
    fine_tuning
    jupyter_notebook
