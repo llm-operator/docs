@@ -13,27 +13,20 @@ Welcome to LLM Operator documentation!
    </p>
 
 
-LLM Operator builds a software stack that provides **LLM as a service**. It provides the
-`OpenAI-compatible API <https://platform.openai.com/docs/api-reference>`_ anywhere, including the
-following functionality:
-
-- LLM fine-tuning job management
-- LLM inference
-- Fine-tuned models management
-- Training/validation file management
-
-LLM Operator also provides optimization technology on GPU, including the following functionality:
-
-- Auto-scaling of inference-workloads
-- Efficient scheduling of fine-tuning batch jobs
-- GPU sharing
+Do you want an API compatible with OpenAI to leverage the extensive GenAI ecosystem?
+If so, LLM Operator is what you need.
+It instantly builds a software stack that provides an OpenAI-compatible API for inference, fine-tuning,
+and model management.
 
 Check out the :doc:`getting_started` section for further information, including
 how to install LLM Operator.
 
-.. note::
+Pleas also see the presentation below to what you can do with LLM Operator:
 
-   This project is under active development.
+.. raw:: html
+
+   <iframe src="https://www.slideshare.net/slideshow/embed_code/key/4h5i9Kg8WQatub?hostedIn=slideshare&page=upload" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+
 
 Contents
 --------
