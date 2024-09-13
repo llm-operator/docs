@@ -25,7 +25,9 @@ Pleas also see the presentation below to what you can do with LLM Operator:
 
 .. raw:: html
 
+   <p style="text-align:center">
    <iframe src="https://www.slideshare.net/slideshow/embed_code/key/4h5i9Kg8WQatub?hostedIn=slideshare&page=upload" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+   </p>
 
 
 Contents

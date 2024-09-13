@@ -13,7 +13,6 @@ The following shows the supported models. Please note that some models work only
    * - TinyLlama/TinyLlama-1.1B-Chat-v1.0
      - AWQ
      - vLLM
-
    * - deepseek-ai/DeepSeek-Coder-V2-Lite-Base
      - Q2_K, Q3_K_M, Q3_K_S, Q4_0
      - Ollama
@@ -21,7 +20,7 @@ The following shows the supported models. Please note that some models work only
      - Q2_K, Q3_K_M, Q3_K_S, Q4_0
      - Ollama
    * - deepseek-ai/deepseek-coder-6.7b-base
-     - N/A
+     - None
      - vLLM, Ollama
    * - deepseek-ai/deepseek-coder-6.7b-base
      - AWQ
