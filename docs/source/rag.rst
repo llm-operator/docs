@@ -50,7 +50,7 @@ Once the files are added into vector store, you can run the completion request w
    )
 
    completion = client.chat.completions.create(
-     model="google-gemma-2b-it-q4",
+     model="google-gemma-2b-it-q4_0",
      messages=[
        {"role": "user", "content": "What is LLM Operator?"}
      ],
@@ -85,7 +85,7 @@ If you want to hit the API endpoint directly, you can use ``curl``. Here is an e
      --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
      --header "Content-Type: application/json" \
      --data '{
-      "model": "google-gemma-2b-it-q4",
+      "model": "google-gemma-2b-it-q4_0",
       "messages": [{"role": "user", "content": "What is LLM Operator?"}],
       "tool_choice": {
         "choice": "auto",

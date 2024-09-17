@@ -77,7 +77,7 @@ Now, you can use OpenAI API in the Jupyter Notebook. Here is an example of using
 
    client = OpenAI()
    completion = client.chat.completions.create(
-     model="google-gemma-2b-it-q4",
+     model="google-gemma-2b-it-q4_0",
      messages=[
        {"role": "user", "content": "What is k8s?"}
      ],

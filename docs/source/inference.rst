@@ -11,7 +11,7 @@ Here is an example chat completion command with the ``llmo`` CLI.
 .. code-block:: console
 
 
-   llmo chat completions create --model google-gemma-2b-it-q4 --role user --completion "What is k8s?"
+   llmo chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "What is k8s?"
 
 
 If you want to use the Python library, you first need to create an API key:
@@ -33,7 +33,7 @@ You can then pass the API key to initialize the OpenAI client and run the comple
    )
 
    completion = client.chat.completions.create(
-     model="google-gemma-2b-it-q4",
+     model="google-gemma-2b-it-q4_0",
      messages=[
        {"role": "user", "content": "What is k8s?"}
      ],
@@ -53,7 +53,7 @@ If you want to hit the API endpoint directly, you can use ``curl``. Here is an e
      --request POST \
      --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
      --header "Content-Type: application/json" \
-     --data '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
+     --data '{"model": "google-gemma-2b-it-q4_0", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
      http://localhost:8080/v1/chat/completions
 
 
