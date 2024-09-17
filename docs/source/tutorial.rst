@@ -146,7 +146,7 @@ The first option is to use the CLI. Here are examle commands:
 
    ./llmo models list
 
-   ./llmo chat completions create --model google-gemma-2b-it-q4 --role user --completion "What is k8s?"
+   ./llmo chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "What is k8s?"
 
 
 .. code-block:: console
@@ -160,7 +160,7 @@ The first option is to use the CLI. Here are examle commands:
      --request POST \
      --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
      --header "Content-Type: application/json" \
-     --data '{"model": "google-gemma-2b-it-q4", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
+     --data '{"model": "google-gemma-2b-it-q4_0", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
      http://localhost:8080/v1/chat/completions
 
 The second option is to run the ``curl`` command and hit the API endpoint.
@@ -179,7 +179,7 @@ The third option is to use Python. Here is an example Python code for hitting th
    )
 
    completion = client.chat.completions.create(
-     model="google-gemma-2b-it-q4",
+     model="google-gemma-2b-it-q4_0",
      messages=[
        {"role": "user", "content": "What is k8s?"}
      ],
