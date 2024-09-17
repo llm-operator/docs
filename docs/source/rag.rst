@@ -124,4 +124,4 @@ Here are examples:
       "model": "sentence-transformers-all-MiniLM-L6-v2-f16",
       "input": ""sample text,
     }' \
-    http://localhost:8080/v1/chat/completions
+    http://localhost:8080/v1/embeddings
