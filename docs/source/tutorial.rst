@@ -1,5 +1,5 @@
-Tutorial: Install to a Kind Cluster
-===================================
+Tutorial
+========
 
 In this tutorial, we provision an EC2 instance, build a `Kind <https://kind.sigs.k8s.io/>`_ cluster, and
 deploy LLM Operator and other required components.

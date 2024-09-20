@@ -16,12 +16,7 @@ Welcome to LLM Operator documentation!
 Do you want an API compatible with OpenAI to leverage the extensive GenAI ecosystem?
 If so, LLM Operator is what you need.
 It instantly builds a software stack that provides an OpenAI-compatible API for inference, fine-tuning,
-and model management.
-
-Check out the :doc:`getting_started` section for further information, including
-how to install LLM Operator.
-
-Pleas also see the presentation below to what you can do with LLM Operator:
+and model management. Pleas see the presentation below to learn more:
 
 .. raw:: html
 
@@ -30,13 +25,17 @@ Pleas also see the presentation below to what you can do with LLM Operator:
    </p>
 
 
+If you want to play with LLM Operator, check out :doc:`tutorial`. You can install LLM Operator in a Kind cluster by following the steps described here.
+You can also just directly move to the :doc:`install` section and install LLM Operator to your Kubernetes clusters!
+
+
 Contents
 --------
 
 .. toctree::
 
-   getting_started
    tutorial
+   install
    inference
    models
    rag
