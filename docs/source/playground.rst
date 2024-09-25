@@ -1,8 +1,8 @@
-Tutorial
-========
+Set up a Playground
+===================
 
-In this tutorial, we provision an EC2 instance, build a `Kind <https://kind.sigs.k8s.io/>`_ cluster, and
-deploy LLM Operator and other required components.
+You can easily set up a playground for LLM Operator and learn it. In this page, we provision an EC2 instance, build
+a `Kind <https://kind.sigs.k8s.io/>`_ cluster, and deploy LLM Operator and other required components.
 
 Once all the setup completes, you can interact with the LLM service
 by directly hitting the API endpoints or using `the OpenAI Python library <https://github.com/openai/openai-python>`_.
@@ -189,8 +189,9 @@ The third option is to use Python. Here is an example Python code for hitting th
      print(response.choices[0].delta.content, end="")
    print("\n")
 
-We have a Jupyter Notebook that goes through all the functionalites. Please download the Notebook
-from https://github.com/llm-operator/llm-operator/blob/main/tutorial/getting_started.ipynb to play around it.
+
+Please visit :doc:`tutorials` to further exercise LLM Operator.
+
 
 Step 7: Clean up
 ----------------
