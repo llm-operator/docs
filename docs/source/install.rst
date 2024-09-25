@@ -395,6 +395,16 @@ Step 8. Install LLM Operator
 
    cat << EOF | envsubst > llm-operator-values.yaml
    global:
+     # This is an ingress configuration with Kong. Please change if you are using a different ingress controller.
+     ingress:
+       ingressClassName: kong
+       # The URL of the ingress controller. this can be a port-forwarding URL (e.g., http://localhost:8080) if there is
+       # no URL that is reachable from the outside of the EKS cluster.
+       controllerUrl: "${INGRESS_CONTROLLER_URL}"
+       annotations:
+         # To remove the buffering from the streaming output of chat completion.
+         konghq.com/response-buffering: "false"
+
      database:
        host: "${POSTGRES_ADDR}"
        port: ${POSTGRES_PORT}
@@ -412,16 +422,6 @@ Step 8. Install LLM Operator
          bucket: "${S3_BUCKET_NAME}"
          region: "${S3_REGION}"
 
-     # This is an ingress configuration with Kong. Please change if you are using a different ingress controller.
-     ingress:
-       ingressClassName: kong
-       # The URL of the ingress controller. this can be a port-forwarding URL (e.g., http://localhost:8080) if there is
-       # no URL that is reachable from the outside of the EKS cluster.
-       controllerUrl: "${INGRESS_CONTROLLER_URL}"
-       annotations:
-         # To remove the buffering from the streaming output of chat completion.
-         konghq.com/response-buffering: "false"
-
    inference-manager-engine:
      serviceAccount:
        create: false
@@ -429,22 +429,20 @@ Step 8. Install LLM Operator
      model:
        default:
          runtimeName: vllm
+         preloaded: true
          resources:
            limits:
              nvidia.com/gpu: 1
        overrides:
          meta-llama/Meta-Llama-3.1-8B-Instruct-q4_0:
-           preloaded: true
            contextLength: 16384
          google/gemma-2b-it-q4_0:
            runtimeName: ollama
-           preloaded: true
            resources:
             limits:
               nvidia.com/gpu: 0
          sentence-transformers/all-MiniLM-L6-v2-f16:
            runtimeName: ollama
-           preloaded: true
            resources:
             limits:
               nvidia.com/gpu: 0
