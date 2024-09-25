@@ -33,19 +33,55 @@ You can deploy only Control Plane components by setting ``tags.worker=false``:
 In the ``values.yaml``, you need to set ``global.workerServiceIngress.create`` to ``true`` and other values so that
 an ingress and a service are created to receive requests from worker nodes.
 
+Here is an example ``values.yaml``.
+
 .. code-block:: yaml
 
-  global:
-    workerServiceGrpcService:
-      annotations:
-        konghq.com/protocol: grpc
+   global:
+     ingress:
+       ingressClassName: kong
+       controllerUrl: https://api.mydomain.com
+       annotations:
+         cert-manager.io/cluster-issuer: letsencrypt
+         konghq.com/response-buffering: "false"
+       # Enable TLS for the ingresses.
+       tls:
+         hosts:
+         - api.llm.mydomain.com
+         secretName: api-tls
+     # Create ingress for gRPC requests coming from worker clusters.
+     workerServiceIngress:
+       create: true
+       annotations:
+         cert-manager.io/cluster-issuer: letsencrypt
+         konghq.com/protocols: grpc,grpcs
+     workerServiceGrpcService:
+       annotations:
+         konghq.com/protocol: grpc
 
-    workerServiceIngress:
-      create: true
-      ingressClassName: kong
-      annotations:
-        konghq.com/protocols: grpc,grpcs
+   # Create a separate load balancer for gRPC streaming requests from inference-manager-engine.
+   inference-manager-server:
+     workerServiceTls:
+       enable: true
+       secretName: inference-cert
+     workerServiceGrpcService:
+       type: LoadBalancer
+       port: 443
+       annotations:
+         external-dns.alpha.kubernetes.io/hostname: inference.llm.mydomain.com
 
+   # Create a separate load balancer for HTTPS requests from session-manager-agent.
+   session-manager-server:
+     workerServiceTls:
+       enable: true
+       secretName: session-cert
+     workerServiceHttpService:
+       type: LoadBalancer
+       port: 443
+       externalTrafficPolicy: Local
+       annotations:
+         service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+         external-dns.alpha.kubernetes.io/hostname: session.llm.mydomain.com
 
 Deploying Worker Components
 ---------------------------
@@ -81,15 +117,30 @@ To make that happen, you first need to create a K8s secret.
 
 The secret needs to be created in a namespace where LLM Operator will be deployed.
 
-When installing the Helm chart for the worker components, you need to specify the following in ``values.yaml``:
+When installing the Helm chart for the worker components, you need to specify addition configurations in ``values.yaml``.
+Here is an example.
 
 .. code-block:: yaml
 
-  global:
-    worker:
-      registrationKeySecret:
-        name: cluster-registration-key
-        key: regKey
+   global:
+     worker:
+       controlPlaneAddr: api.llm.mydomain.com:443
+       tls:
+         enable: true
+       registrationKeySecret:
+         name: cluster-registration-key
+         key: regKey
+
+   inference-manager-engine:
+     inferenceManagerServerWorkerServiceAddr: inference.llm.mydomain.com:443
+
+   job-manager-dispatcher:
+     notebook:
+       llmOperatorBaseUrl: https://api.llm.mydomain.com/v1
+
+   session-manager-agent:
+     sessionManagerServerWorkerServiceAddr: session.llm.mydomain.com:443
+
 
 ``tags.control-plane=false`` also needs to be set:
 
