@@ -48,7 +48,7 @@ port-forwarding to reach the API endpoints.
 
 .. note::
 
-   When port-forwarding is used, the same port needs to be used consistently as the port number will bee included the OIDC issuer URL. We will explain details later.
+   When port-forwarding is used, the same port needs to be used consistently as the port number will be included the OIDC issuer URL. We will explain details later.
 
 You can provision RDS and S3 in AWS, or you can deploy Postgres and `MinIO <https://min.io/>`_ inside your EKS cluster. The following permissions
 are required for S3:
@@ -78,7 +78,7 @@ Step 1. Provision EKS cluster with Karpenter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the `Karpenter getting started guide <https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/>`_ and
-create a EKS cluster and add Karpenter. The following is the installation step copied from the page (with slight simplification).
+create an EKS cluster and add Karpenter. The following is the installation step copied from the page (with slight simplification).
 
 .. code-block:: console
 
@@ -452,6 +452,7 @@ Step 8. Install LLM Operator
    inference-manager-server:
      service:
        annotations:
+         # These annotations are only meaningful for Kong ingress controller to extend the timeout.
          konghq.com/connect-timeout: "360000"
          konghq.com/read-timeout: "360000"
          konghq.com/write-timeout: "360000"
@@ -475,6 +476,7 @@ Step 8. Install LLM Operator
      - google/gemma-2b-it-q4_0
      - sentence-transformers/all-MiniLM-L6-v2-f16
 
+   # Required when RAG is used.
    vector-store-manager-server:
      llmEngineAddr: ollama-sentence-transformers-all-minilm-l6-v2-f16:11434
    EOF
@@ -497,6 +499,25 @@ Step 8. Install LLM Operator
 
 If you would like to install only the control-plane components or the worker-plane components, please see
 :doc:`multi_cluster_deployment`.
+
+
+Step 9. Verify the installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can verify the installation by sending sample chat completion requests.
+
+.. code-block:: console
+
+   echo "This is your endpoint URL: ${INGRESS_CONTROLLER_URL}/v1"
+
+   llmo auth login
+   # Type the above endpoint URL.
+
+   llmo models list
+
+   llmo chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "what is k8s?"
+
+   llmo chat completions create --model meta-llama-Meta-Llama-3.1-8B-Instruct-q4_0 --role user --completion "hello"
 
 
 Optional: Install Prometheus and Grafana
