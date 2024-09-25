@@ -25,7 +25,7 @@ and model management. Pleas see the presentation below to learn more:
    </p>
 
 
-If you want to play with LLM Operator, check out :doc:`tutorial`. You can install LLM Operator in a Kind cluster by following the steps described here.
+If you want to play with LLM Operator, check out :doc:`playground`. You can install LLM Operator in a Kind cluster by following the steps described there.
 You can also just directly move to the :doc:`install` section and install LLM Operator to your Kubernetes clusters!
 
 
@@ -34,8 +34,9 @@ Contents
 
 .. toctree::
 
-   tutorial
+   playground
    install
+   tutorials
    inference
    models
    rag
