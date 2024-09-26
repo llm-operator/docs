@@ -4,7 +4,7 @@ Technical Architecture
 Components
 ----------
 
-LLM Operator provisions the LLM stack consisting of the following micro services:
+LLMariner provisions the LLM stack consisting of the following micro services:
 
 - Inference Manager
 - Job Manager
@@ -22,7 +22,7 @@ architecture:
 .. image:: images/architecture_diagram.png
 
 
-LLM Operator has dependency to the following components:
+LLMariner has dependency to the following components:
 
 - Ingress controller
 - SQL database
@@ -41,7 +41,7 @@ Key Technologies
 Quota Management for Fine-tuning Jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LLM Operator allows uses to manage GPU quotas with integration with `Kueue <https://github.com/kubernetes-sigs/kueue>`_.
+LLMariner allows uses to manage GPU quotas with integration with `Kueue <https://github.com/kubernetes-sigs/kueue>`_.
 
 
 Autoscaling and Dynamic Model Loading/offloading in Inference
@@ -54,10 +54,10 @@ pods based on demand.
 Session Manager: Secure Access to Kubernetes API Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LLM Operator internally accesses Kubernetes API server to allow end
+LLMariner internally accesses Kubernetes API server to allow end
 users to access logs of fine-tuning jobs, exec into a Jupyter
 Notebook, etc. As end users might not have direct access to a Kubernetes API server,
-LLM Operator uses Session Manager to provide a secure tunnel between end users and Kubernetes API server.
+LLMariner uses Session Manager to provide a secure tunnel between end users and Kubernetes API server.
 
 Session Manager consists of two components: `server` and `agent`. The `agent` establishes HTTP(S) connections
 to the `server` and keeps the connections. Upon receiving a request from end users, the `server` forwards the request

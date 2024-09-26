@@ -8,8 +8,8 @@ Here is an instruction for running Open WebUI in a Kubernetes cluster.
 
 .. code-block:: console
 
-   OPENAI_API_KEY=<LLM Operator API key>
-   OPEN_API_BASE_URL=<LLM Operator API endpoint>
+   OPENAI_API_KEY=<LLMariner API key>
+   OPEN_API_BASE_URL=<LLMariner API endpoint>
 
    kubectl create namespace open-webui
    kubectl create secret generic -n open-webui llm-operator-api-key --from-literal=key=${OPENAI_API_KEY}

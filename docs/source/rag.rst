@@ -1,7 +1,7 @@
 Retrieval-Augmented Generation (RAG)
 ====================================
 
-This page describes how to use RAG with LLM Operator.
+This page describes how to use RAG with LLMariner.
 
 An Example Flow
 ---------------
@@ -14,13 +14,13 @@ Here is an example script with the OpenAI Python library:
    from openai import OpenAI
 
    client = OpenAI(
-     base_url="<LLM Operator Endpoint URL>",
-     api_key="<LLM Operator API key>"
+     base_url="<LLMariner Endpoint URL>",
+     api_key="<LLMariner API key>"
    )
 
    filename = "llm_operator_overview.txt"
    with open(filename, "w") as fp:
-     fp.write("LLM Operator builds a software stack that provides LLM as a service. It provides the OpenAI-compatible API.")
+     fp.write("LLMariner builds a software stack that provides LLM as a service. It provides the OpenAI-compatible API.")
    file = client.files.create(
      file=open(filename, "rb"),
      purpose="assistants",
@@ -52,7 +52,7 @@ Once the files are added into vector store, you can run the completion request w
    completion = client.chat.completions.create(
      model="google-gemma-2b-it-q4_0",
      messages=[
-       {"role": "user", "content": "What is LLM Operator?"}
+       {"role": "user", "content": "What is LLMariner?"}
      ],
      tool_choice = {
       "choice": "auto",
@@ -86,7 +86,7 @@ If you want to hit the API endpoint directly, you can use ``curl``. Here is an e
      --header "Content-Type: application/json" \
      --data '{
       "model": "google-gemma-2b-it-q4_0",
-      "messages": [{"role": "user", "content": "What is LLM Operator?"}],
+      "messages": [{"role": "user", "content": "What is LLMariner?"}],
       "tool_choice": {
         "choice": "auto",
         "type": "function",

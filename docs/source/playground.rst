@@ -1,8 +1,8 @@
 Set up a Playground
 ===================
 
-You can easily set up a playground for LLM Operator and learn it. In this page, we provision an EC2 instance, build
-a `Kind <https://kind.sigs.k8s.io/>`_ cluster, and deploy LLM Operator and other required components.
+You can easily set up a playground for LLMariner and learn it. In this page, we provision an EC2 instance, build
+a `Kind <https://kind.sigs.k8s.io/>`_ cluster, and deploy LLMariner and other required components.
 
 Once all the setup completes, you can interact with the LLM service
 by directly hitting the API endpoints or using `the OpenAI Python library <https://github.com/openai/openai-python>`_.
@@ -24,10 +24,10 @@ To install ``kubernetes.core.k8s`` module, run the following command:
    ansible-galaxy collection install kubernetes.core
 
 
-Step 2: Clone the LLM Operator Repository
------------------------------------------
+Step 2: Clone the LLMariner Repository
+--------------------------------------
 
-We use the Terraform configuration and Ansible playbook in the `the LLM Operator repository <https://github.com/llm-operator/llm-operator>`_.
+We use the Terraform configuration and Ansible playbook in the `the LLMariner repository <https://github.com/llm-operator/llm-operator>`_.
 Run the following commands to clone the repo and move to the directory where the Terraform configuration file is stored.
 
 .. code-block:: console
@@ -69,8 +69,8 @@ Then, run the following Terraform commands to initialize and create an EC2 insta
 
    If you want to run only Ansible playbook, you can just run ``ansible-playbook -i inventory.ini playbook.yml``.
 
-Once the deployment completes, a Kind cluster is built in the EC2 instance and LLM Operator is running in the cluster.
-It will take another about five minutes for LLM Operator to load base models, but you can move to the next step meanwhile.
+Once the deployment completes, a Kind cluster is built in the EC2 instance and LLMariner is running in the cluster.
+It will take another about five minutes for LLMariner to load base models, but you can move to the next step meanwhile.
 
 
 Step 4: Set up SSH Connection
@@ -101,7 +101,7 @@ with the following command:
 Step 5: Obtain an API Key
 -------------------------
 
-To access LLM service, you need an API key. You can download the LLM Operator CLI and use that to login the system,
+To access LLM service, you need an API key. You can download the LLMariner CLI and use that to login the system,
 and obtain the API key.
 
 .. code-block:: console
@@ -190,7 +190,7 @@ The third option is to use Python. Here is an example Python code for hitting th
    print("\n")
 
 
-Please visit :doc:`tutorials` to further exercise LLM Operator.
+Please visit :doc:`tutorials` to further exercise LLMariner.
 
 
 Step 7: Clean up

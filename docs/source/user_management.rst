@@ -1,7 +1,7 @@
 User Management
 ===============
 
-LLM Operator installs `Dex <https://github.com/dexidp/dex>`_ by default. Dex is an
+LLMariner installs `Dex <https://github.com/dexidp/dex>`_ by default. Dex is an
 identity service that uses `OpenID Connect <https://openid.net/developers/how-connect-works/>`_
 for authentication.
 
@@ -23,7 +23,7 @@ You can switch a connector to an IdP in your environment (e.g., LDAP, GitHub). H
 
    global:
      auth:
-       oidcIssuerUrl: https://<LLM Operator endpoint URL>/v1/dex
+       oidcIssuerUrl: https://<LLMariner endpoint URL>/v1/dex
 
    dex-server:
      oauth2:
@@ -39,7 +39,7 @@ You can switch a connector to an IdP in your environment (e.g., LDAP, GitHub). H
          issuer: <Okta issuer URL>
          clientID: <Client ID of an Okta application>
          clientSecret: <Client secret of an Okta application>
-         redirectURI: https://<LLM Operator endpoint URL>/v1/dex/callback
+         redirectURI: https://<LLMariner endpoint URL>/v1/dex/callback
          insecureSkipEmailVerified: true
      enablePasswordDb: false
      staticPassword:

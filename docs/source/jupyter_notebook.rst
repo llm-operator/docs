@@ -1,7 +1,7 @@
 Jupyter Notebook
 ================
 
-LLM Operator allows users to run a Jupyter Notebook in a Kubernetes cluster. This functionality
+LLMariner allows users to run a Jupyter Notebook in a Kubernetes cluster. This functionality
 is useful when users want to run ad-hoc Python scripts that requires GPU.
 
 

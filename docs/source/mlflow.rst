@@ -3,7 +3,7 @@ MLflow
 
 `MLflow <https://mlflow.org/>`_ is an open-source tool for managing the machine learning lifecycle. It
 has various features for LLMs (`link <https://mlflow.org/docs/latest/llms/index.html>`_) and integration
-with OpenAI. We can apply these MLflow features to the LLM endpoints provided by LLM Operator.
+with OpenAI. We can apply these MLflow features to the LLM endpoints provided by LLMariner.
 
 For example, you can deploy a `MLflow Deployments Server for LLMs <https://mlflow.org/docs/latest/llms/index.html#id1>`_
 and use `Prompt Engineering UI <https://mlflow.org/docs/latest/llms/index.html#id3>`_.

@@ -1,7 +1,7 @@
 General-purpose Training
 ========================
 
-LLM Operator allows users to run general-purpose training jobs in their Kubernetes clusters.
+LLMariner allows users to run general-purpose training jobs in their Kubernetes clusters.
 
 Creating a Training Job
 -----------------------
@@ -39,7 +39,7 @@ You can use the `llmo` CLI to check the logs of a training job.
 PyTorch Distributed Data Parallel
 ---------------------------------
 
-LLM Operator supports PyTorch Distributed Data Parallel (DDP) training. You can run a DDP training job by specifying the number of per-node GPUs and the number of workers in the ``--gpu`` and ``--workers`` flags, respectively.
+LLMariner supports PyTorch Distributed Data Parallel (DDP) training. You can run a DDP training job by specifying the number of per-node GPUs and the number of workers in the ``--gpu`` and ``--workers`` flags, respectively.
 
 .. code-block:: console
 

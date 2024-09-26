@@ -1,7 +1,7 @@
 Model Fine-tuning
 =================
 
-This page describes how to fine-tune models with LLM Operator.
+This page describes how to fine-tune models with LLMariner.
 
 Submitting a Fine-Tuning Job
 ----------------------------
@@ -14,8 +14,8 @@ that uploads a training file and uses that to run a fine-tuning job.
    from openai import OpenAI
 
    client = OpenAI(
-     base_url="<LLM Operator Endpoint URL>",
-     api_key="<LLM Operator API key>"
+     base_url="<LLMariner Endpoint URL>",
+     api_key="<LLMariner API key>"
    )
 
    file = client.files.create(
@@ -74,7 +74,7 @@ You can use the `llmo` CLI to check the logs and exec into the pod.
 Managing Quota
 --------------
 
-LLM Operator allows uses to manage GPU quotas with integration with `Kueue <https://kueue.sigs.k8s.io/>`_.
+LLMariner allows uses to manage GPU quotas with integration with `Kueue <https://kueue.sigs.k8s.io/>`_.
 
 You can install Kueue with the following command:
 

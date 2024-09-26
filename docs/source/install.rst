@@ -1,7 +1,7 @@
-Install LLM Operator
-====================
+Install LLMariner
+=================
 
-We provide a Helm chart for installing LLM Operator. You can obtain the Helm chart from our repository and install.
+We provide a Helm chart for installing LLMariner. You can obtain the Helm chart from our repository and install.
 
 .. code-block:: console
 
@@ -32,7 +32,7 @@ Let's go through the details of the installation. Here we use EKS as a target K8
 Prerequisites
 ^^^^^^^^^^^^^
 
-LLM Operator requires the following resources:
+LLMariner requires the following resources:
 
 - `Nvida GPU Operator <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html>`_
 - Ingress controller (to route API requests)
@@ -40,7 +40,7 @@ LLM Operator requires the following resources:
 - S3-compatible object store (to store training files and models)
 - `Milvus <https://milvus.io/>`_ (for RAG, optional)
 
-LLM Operator can process inference requests on CPU nodes, but it can be best used with GPU nodes. Nvidia GPU Operator is required to install the device plugin and
+LLMariner can process inference requests on CPU nodes, but it can be best used with GPU nodes. Nvidia GPU Operator is required to install the device plugin and
 make GPUs visible in the K8s cluster.
 
 Preferably the ingress controller should have a DNS name or a IP that is reachable from the outside of the EKS cluster. If not, you can rely on
@@ -70,7 +70,7 @@ are required for S3:
       ]
     }
 
-The rest of the section go through concrete steps to create an EKS cluster, create necessary resources, and install LLM Operator. You can
+The rest of the section go through concrete steps to create an EKS cluster, create necessary resources, and install LLMariner. You can
 skip some of the steps if you have already made necessary installation/setup.
 
 
@@ -241,7 +241,7 @@ Nvidia GPU Operator is required to install the device plugin and make GPU resour
 Step 4. Install an ingress controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An ingress controller is required to route HTTP/HTTPS requests to the LLM Operator components. Any ingress
+An ingress controller is required to route HTTP/HTTPS requests to the LLMariner components. Any ingress
 controller works, and you can skip this step if your EKS cluster already has an ingress controller.
 
 Here is an example that installs `Kong <https://konghq.com/>`_ and make the ingress controller reachable
@@ -263,7 +263,7 @@ via AWS loadbalancer:
 Step 5. Create an RDS instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will create an RDS in the same VPC as the EKS cluster so that it can be reachable from the LLM Operator components. Here is an example command for creating a DB subnet group and an RDS instance.
+We will create an RDS in the same VPC as the EKS cluster so that it can be reachable from the LLMariner components. Here is an example command for creating a DB subnet group and an RDS instance.
 
 .. code-block:: console
 
@@ -274,7 +274,7 @@ We will create an RDS in the same VPC as the EKS cluster so that it can be reach
 
    aws rds create-db-subnet-group \
      --db-subnet-group-name "${DB_SUBNET_GROUP_NAME}" \
-     --db-subnet-group-description "LLM Operator Demo" \
+     --db-subnet-group-description "LLMariner Demo" \
      --subnet-ids "${EKS_SUBNET_ID0}" "${EKS_SUBNET_ID1}"
 
    export DB_INSTANCE_ID="llm-operator-demo"
@@ -316,7 +316,7 @@ You can verify if the DB instance is reachable from the EKS cluster by running t
    kubectl delete pods psql
 
 
-If ``psq`` can successfully connect to the RDS instance, create a K8s secret in the ``llm-operator`` namespace so that later LLM Operator can retrieve the database password from the secret.
+If ``psq`` can successfully connect to the RDS instance, create a K8s secret in the ``llm-operator`` namespace so that later LLMariner can retrieve the database password from the secret.
 
 .. code-block:: console
 
@@ -328,7 +328,7 @@ If ``psq`` can successfully connect to the RDS instance, create a K8s secret in 
 
 .. note::
 
-   LLM Operator will create additional databases on the fly for each API service (e.g., `job_manager`, `model_manager`).
+   LLMariner will create additional databases on the fly for each API service (e.g., `job_manager`, `model_manager`).
    You can see all created databases by running ``SELECT count(datname) FROM pg_database;``.
 
 
@@ -385,12 +385,12 @@ Step 7. Install Milvus
 TODO(kenji): Fill this out.
 
 
-Step 8. Install LLM Operator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 8. Install LLMariner
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
-   # Set the endpoint URL of LLM Operator. Please change if you are using a different ingress controller.
+   # Set the endpoint URL of LLMariner. Please change if you are using a different ingress controller.
    export INGRESS_CONTROLLER_URL=http://$(kubectl get services -n kong kong-proxy-kong-proxy  -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 
    cat << EOF | envsubst > llm-operator-values.yaml
@@ -617,7 +617,7 @@ Then create a ``ClusterIssuer`` for your domain. Here is an example manifest tha
            ...
 
 
-Then you can add the following to ``values.yaml`` of LLM Operator to enable TLS.
+Then you can add the following to ``values.yaml`` of LLMariner to enable TLS.
 
 .. code-block:: yaml
 
