@@ -63,9 +63,13 @@ are required for S3:
           "Action": [
             "s3:PutObject",
             "s3:GetObject",
-            "s3:DeleteObject"
+            "s3:DeleteObject",
+            "s3:ListBucket"
           ],
-          "Resource": "arn:aws:s3:::<bucket name>/*"
+          "Resource": [
+            "arn:aws:s3:::<bucket name>",
+            "arn:aws:s3:::<bucket name>/*"
+	  ]
         }
       ]
     }
@@ -359,9 +363,13 @@ Pods running in the EKS cluster need to be able to access the S3 bucket. We will
          "Action": [
            "s3:PutObject",
            "s3:GetObject",
-           "s3:DeleteObject"
+           "s3:DeleteObject",
+           "s3:ListBucket"
          ],
-         "Resource": "arn:aws:s3:::${S3_BUCKET_NAME}/*"
+         "Resource": [
+           "arn:aws:s3:::${S3_BUCKET_NAME}/*",
+           "arn:aws:s3:::${S3_BUCKET_NAME}"
+	 ]
        }
      ]
    }
