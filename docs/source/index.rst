@@ -1,5 +1,7 @@
-Welcome to LLM Operator documentation!
-======================================
+Welcome to LLMariner Documentation!
+===================================
+
+.. image:: images/logo.png
 
 .. raw:: html
 
@@ -12,9 +14,8 @@ Welcome to LLM Operator documentation!
    <strong>Transform your GPU clusters into a powerhouse for generative AI workloads</strong>
    </p>
 
-
 Do you want an API compatible with OpenAI to leverage the extensive GenAI ecosystem?
-If so, LLM Operator is what you need.
+If so, LLMariner is what you need.
 It instantly builds a software stack that provides an OpenAI-compatible API for inference, fine-tuning,
 and model management. Pleas see the presentation below to learn more:
 
@@ -25,8 +26,8 @@ and model management. Pleas see the presentation below to learn more:
    </p>
 
 
-If you want to play with LLM Operator, check out :doc:`playground`. You can install LLM Operator in a Kind cluster by following the steps described there.
-You can also just directly move to the :doc:`install` section and install LLM Operator to your Kubernetes clusters!
+If you want to play with LLMariner, check out :doc:`playground`. You can install LLMariner in a Kind cluster by following the steps described there.
+You can also just directly move to the :doc:`install` section and install LLMariner to your Kubernetes clusters!
 
 
 Contents

@@ -7,7 +7,7 @@ Overview
 Basic Concepts
 ^^^^^^^^^^^^^^
 
-LLM Operator provides access control with two concepts: `Organizations` and `Projects`.
+LLMariner provides access control with two concepts: `Organizations` and `Projects`.
 The basic concept follows `OpenAI API <https://help.openai.com/en/articles/9186755-managing-your-work-in-the-api-platform-with-projects>`_.
 
 You can define one or more than one organization. In each organization, you can define one or more
@@ -26,7 +26,7 @@ Roles
 Each user has an `organization role` and a `project role`, and these roles control resources that a user can access and actions that a user can take.
 
 An organization role is either ``owner`` or ``reader``. A project role is either ``owner`` or ``member``. If you want to allow a user
-to use LLM Operator without any organization/project management privilege, you can grant the organization role ``reader`` and the project role ``member``.
+to use LLMariner without any organization/project management privilege, you can grant the organization role ``reader`` and the project role ``member``.
 If you want to allow a user to manage the project, you can grant the project role ``owner``.
 
 Here is an diagram shows an example role assignment.

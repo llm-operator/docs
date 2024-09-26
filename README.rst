@@ -1,7 +1,7 @@
-LLM Operator Documents
-=======================================
+LLMariner Documents
+===================
 
-This is a source repository for https://llm-operator.readthedocs.io/en/latest/.
+This is a source repository for https://llmariner.readthedocs.io/en/latest/.
 
 Build a Document locally
 ------------------------

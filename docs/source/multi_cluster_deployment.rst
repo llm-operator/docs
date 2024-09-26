@@ -1,14 +1,14 @@
 Multi-Cluster and Multi-Cloud Deployment
 ========================================
 
-LLM Operator deploys Kubernetes deployments to provision the LLM
+LLMariner deploys Kubernetes deployments to provision the LLM
 stack. In a typical configuration, all the services are deployed into
 a single Kubernetes cluster, but you can also deploy these services on
 multiple Kubernetes clusters. For example, you can deploy a control
 plane component in a CPU K8s cluster and deploy the rest of the
 components in GPU compute clusters.
 
-LLM Operator can be deployed into multiple GPU clusters, and the clusters can span across multiple cloud providers (including
+LLMariner can be deployed into multiple GPU clusters, and the clusters can span across multiple cloud providers (including
 GPU specific cloud like CoreWeave) and on-prem.
 
 .. image:: images/multi_cluster.png
@@ -86,7 +86,7 @@ Here is an example ``values.yaml``.
 Deploying Worker Components
 ---------------------------
 
-To deploy LLM Operator to a worker GPU cluster, you first need to obtain a registration key for the cluster.
+To deploy LLMariner to a worker GPU cluster, you first need to obtain a registration key for the cluster.
 
 .. code-block:: console
 
@@ -100,7 +100,7 @@ The following is an example command that sets the registration key to the enviro
 
 The command generates a new registration key.
 
-Then you need to make LLM Operator worker components to use the registration key
+Then you need to make LLMariner worker components to use the registration key
 when making gRPC calls to the control plane.
 
 To make that happen, you first need to create a K8s secret.
@@ -115,7 +115,7 @@ To make that happen, you first need to create a K8s secret.
      --from-literal=regKey="${REGISTRATION_KEY}"
 
 
-The secret needs to be created in a namespace where LLM Operator will be deployed.
+The secret needs to be created in a namespace where LLMariner will be deployed.
 
 When installing the Helm chart for the worker components, you need to specify addition configurations in ``values.yaml``.
 Here is an example.

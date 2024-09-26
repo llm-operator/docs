@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'LLM Operator'
+project = 'LLMariner'
 copyright = '2024, CloudNatix Inc.'
 author = ''
 
