@@ -1,5 +1,5 @@
-Architecture
-============
+Technical Architecture
+=======================
 
 Components
 ----------
