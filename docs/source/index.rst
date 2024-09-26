@@ -49,4 +49,5 @@ Contents
    architecture
    multi_cluster_deployment
    integrations
+   hosted_control_plane
    roadmap
