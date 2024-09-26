@@ -518,8 +518,8 @@ You can verify the installation by sending sample chat completion requests.
    llmo chat completions create --model meta-llama-Meta-Llama-3.1-8B-Instruct-q4_0 --role user --completion "hello"
 
 
-Optional: Install Prometheus and Grafana
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Optional: Monitor GPU utilization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you would like to install Prometheus and Grafana to see GPU utilization, run:
 
@@ -538,7 +538,7 @@ If you would like to install Prometheus and Grafana to see GPU utilization, run:
    EOF
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
    helm repo update
-   # TODO(kenji): Consider deploy prometheus-operator instead.
+
    helm upgrade --install --wait \
      --namespace monitoring \
      --create-namespace \
@@ -583,7 +583,62 @@ If you would like to install Prometheus and Grafana to see GPU utilization, run:
 
 
 
-Optional: Install Cert Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Optional: Enable TLS
+^^^^^^^^^^^^^^^^^^^^
 
-TODO(kenji): Fill this out.
+First follow `Cert Manager installation document <https://cert-manager.io/Doc/>`_ and install Cert Manager to your K8s cluster if you don't have.
+Then create a ``ClusterIssuer`` for your domain. Here is an example manifest that uses Let's Encrypt.
+
+.. code-block:: yaml
+
+   apiVersion: cert-manager.io/v1
+   kind: ClusterIssuer
+   metadata:
+     name: letsencrypt
+   spec:
+     acme:
+       server: https://acme-v02.api.letsencrypt.org/directory
+       email: user@mydomain.com
+       privateKeySecretRef:
+         name: letsencrypt
+       solvers:
+       - http01:
+          ingress:
+             ingressClassName: kong
+       - selector:
+           dnsZones:
+           - llm.mydomain.com
+         dns01:
+           ...
+
+
+Then you can add the following to ``values.yaml`` of LLM Operator to enable TLS.
+
+.. code-block:: yaml
+
+   global:
+     ingress:
+       annotations:
+         cert-manager.io/cluster-issuer: letsencrypt
+       tls:
+         hosts:
+         - api.llm.mydomain.com
+         secretName: api-tls
+
+The ingresses created from the Helm chart will have the following annotation
+and spec:
+
+.. code-block:: yaml
+
+   apiVersion: networking.k8s.io/v1
+   kind: Ingress
+   metadata:
+     annotations:
+       cert-manager.io/cluster-issuer: letsencrypt-prod
+   ...
+   spec:
+     tls:
+     - hosts:
+       - api.llm.mydomain.com
+       secretName: api-tls
+     ...
