@@ -422,6 +422,11 @@ Step 8. Install LLM Operator
          bucket: "${S3_BUCKET_NAME}"
          region: "${S3_REGION}"
 
+   file-manager-server:
+     serviceAccount:
+       create: false
+       name: "${LLM_OPERATOR_SERVICE_ACCOUNT_NAME}"
+
    inference-manager-engine:
      serviceAccount:
        create: false
