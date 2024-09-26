@@ -48,7 +48,7 @@ Contents
    fine_tuning
    jupyter_notebook
    training
-   gpu_showback
+   visibility
    user_management
    access_control
 

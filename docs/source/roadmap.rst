@@ -38,6 +38,8 @@ Milestone 4 (In-progress)
 -------------------------
 
 - [X] Embedding API
+- [ ] API usage visibility
+- [ ] Fine-tuning support with vLLM
 - [ ] High availability
 - [ ] Frontend
 - [ ] GPU showback
