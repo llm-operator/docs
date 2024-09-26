@@ -33,10 +33,15 @@ Contents
 --------
 
 .. toctree::
+   :caption: Getting Started
 
    playground
    install
    tutorials
+
+.. toctree::
+   :caption: Features
+
    inference
    models
    rag
@@ -46,8 +51,23 @@ Contents
    gpu_showback
    user_management
    access_control
+
+.. toctree::
+   :caption: Integrations
+
+   openwebui
+   continue
+   mlflow
+   wandb
+
+.. toctree::
+   :caption: Advanced Topics
+
    architecture
    multi_cluster_deployment
-   integrations
    hosted_control_plane
+
+.. toctree::
+   :caption: Development Plan
+
    roadmap
