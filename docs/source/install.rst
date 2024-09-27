@@ -573,6 +573,9 @@ Step 8. Install LLMariner
 
    # Required when RAG is used.
    vector-store-manager-server:
+     serviceAccount:
+       create: false
+       name: "${LLM_OPERATOR_SERVICE_ACCOUNT_NAME}"
      vectorDatabase:
        host: milvus
      llmEngineAddr: ollama-sentence-transformers-all-minilm-l6-v2-f16:11434
