@@ -74,7 +74,7 @@ You can use the `llmo` CLI to check the logs and exec into the pod.
 Managing Quota
 --------------
 
-LLMariner allows uses to manage GPU quotas with integration with `Kueue <https://kueue.sigs.k8s.io/>`_.
+LLMariner allows users to manage GPU quotas with integration with `Kueue <https://kueue.sigs.k8s.io/>`_.
 
 You can install Kueue with the following command:
 

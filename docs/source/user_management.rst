@@ -47,5 +47,5 @@ You can switch a connector to an IdP in your environment (e.g., LDAP, GitHub). H
 
 Please refer to the `Dec documentations <https://dexidp.io/docs/connectors/>`_ for more details.
 
-The Helm chart for Dex creates an ingress so that HTTP requests to `v1/dex` are routed to Dex. This endpoints
-work as OIDC issuer URL that CLI and backend servers use.
+The Helm chart for Dex creates an ingress so that HTTP requests to `v1/dex` are routed to Dex. This endpoint URL
+works as the OIDC issuer URL that CLI and backend servers use.

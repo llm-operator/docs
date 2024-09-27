@@ -27,7 +27,7 @@ To install ``kubernetes.core.k8s`` module, run the following command:
 Step 2: Clone the LLMariner Repository
 --------------------------------------
 
-We use the Terraform configuration and Ansible playbook in the `the LLMariner repository <https://github.com/llm-operator/llm-operator>`_.
+We use the Terraform configuration and Ansible playbook in the `LLMariner repository <https://github.com/llm-operator/llm-operator>`_.
 Run the following commands to clone the repo and move to the directory where the Terraform configuration file is stored.
 
 .. code-block:: console
@@ -67,7 +67,7 @@ Then, run the following Terraform commands to initialize and create an EC2 insta
 
 .. note::
 
-   If you want to run only Ansible playbook, you can just run ``ansible-playbook -i inventory.ini playbook.yml``.
+   If you want to run only the Ansible playbook, you can just run ``ansible-playbook -i inventory.ini playbook.yml``.
 
 Once the deployment completes, a Kind cluster is built in the EC2 instance and LLMariner is running in the cluster.
 It will take another about five minutes for LLMariner to load base models, but you can move to the next step meanwhile.
@@ -140,7 +140,7 @@ Step 6: Interact with the LLM Service
 
 There are mainly three ways to interact with the LLM service.
 
-The first option is to use the CLI. Here are examle commands:
+The first option is to use the CLI. Here are example commands:
 
 .. code-block:: console
 
