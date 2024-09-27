@@ -349,6 +349,15 @@ We will create an S3 bucket where model files are stored. Here is an example
 
    aws s3api create-bucket --bucket "${S3_BUCKET_NAME}" --region "${S3_REGION}"
 
+If you want to set up Milvus for RAG, please create another S3 bucket for Milvus:
+
+.. code-block:: console
+   # Please change the bucket name to something else.
+   export MILVUS_S3_BUCKET_NAME="llm-operator-demo-milvus"
+
+   aws s3api create-bucket --bucket "${MILVUS_S3_BUCKET_NAME}" --region "${S3_REGION}"
+
+
 Pods running in the EKS cluster need to be able to access the S3 bucket. We will create an
 `IAM role for service account <https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html>`_ for that.
 
@@ -368,7 +377,9 @@ Pods running in the EKS cluster need to be able to access the S3 bucket. We will
          ],
          "Resource": [
            "arn:aws:s3:::${S3_BUCKET_NAME}/*",
-           "arn:aws:s3:::${S3_BUCKET_NAME}"
+           "arn:aws:s3:::${S3_BUCKET_NAME}",
+           "arn:aws:s3:::${MILVUS_S3_BUCKET_NAME}/*",
+           "arn:aws:s3:::${MILVUS_S3_BUCKET_NAME}"
 	 ]
        }
      ]
@@ -390,7 +401,80 @@ Pods running in the EKS cluster need to be able to access the S3 bucket. We will
 Step 7. Install Milvus
 ^^^^^^^^^^^^^^^^^^^^^^
 
-TODO(kenji): Fill this out.
+Install `Milvus <https://milvus.io/>`_ as it is used a backend vector database for RAG.
+
+Milvus creates Persistent Volumes. Follow https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html and install EBS CSI driver.
+
+.. code-block:: console
+
+   eksctl create iamserviceaccount \
+     --name ebs-csi-controller-sa \
+     --namespace kube-system \
+     --cluster "${CLUSTER_NAME}" \
+     --role-name AmazonEKS_EBS_CSI_DriverRole \
+     --role-only \
+     --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+     --approve
+
+   eksctl create addon \
+     --cluster "${CLUSTER_NAME}" \
+     --name aws-ebs-csi-driver \
+     --version latest \
+     --service-account-role-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:role/AmazonEKS_EBS_CSI_DriverRole" \
+     --force
+
+
+Then install the Helm chart. Milvus requires access to the S3 bucket. To use the same service account created above, we deploy
+Milvus in the same namespace as LLMariner.
+
+.. code-block:: console
+
+   cat << EOF | envsubst > milvus-values.yaml
+   cluster:
+     enabled: false
+
+   etcd:
+     replicaCount: 1
+     persistence:
+       storageClass: gp2 # Use gp3 if available
+
+   pulsar:
+     enabled: false
+
+   minio:
+     enabled: false
+
+   standalone:
+     persistence:
+       persistentVolumeClaim:
+         storageClass: gp2 # Use gp3 if available
+         size: 10Gi
+
+   serviceAccount:
+     create: false
+     name: "${LLM_OPERATOR_SERVICR_ACCOUNT_NAME}"
+
+   externalS3:
+     enabled: true
+     host: s3.us-east-1.amazonaws.com
+     port: 443
+     useSSL: true
+     bucketName: "${MILVUS_S3_BUCKET_NAME}"
+     useIAM: true
+     cloudProvider: aws
+     iamEndpoint: ""
+     logLevel: info
+   EOF
+
+   helm repo add zilliztech https://zilliztech.github.io/milvus-helm/
+   helm repo update
+   helm upgrade --install --wait \
+     --namespace "${LLM_OPERATOR_NAMESPACE}" \
+     milvus zilliztech/milvus \
+     -f milvus-values.yaml
+
+Please see the `Milvus installation document <https://milvus.io/docs/install-overview.md>`_ and the `Helm chart <https://artifacthub.io/packages/helm/milvus/milvus>`_
+for other installation options.
 
 
 Step 8. Install LLMariner
@@ -489,6 +573,8 @@ Step 8. Install LLMariner
 
    # Required when RAG is used.
    vector-store-manager-server:
+     vectorDatabase:
+       host: milvus
      llmEngineAddr: ollama-sentence-transformers-all-minilm-l6-v2-f16:11434
    EOF
 
