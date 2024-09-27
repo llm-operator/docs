@@ -17,7 +17,7 @@ Welcome to LLMariner Documentation!
 Do you want an API compatible with OpenAI to leverage the extensive GenAI ecosystem?
 If so, LLMariner is what you need.
 It instantly builds a software stack that provides an OpenAI-compatible API for inference, fine-tuning,
-and model management. Pleas see the presentation below to learn more:
+and model management. Please see the presentation below to learn more:
 
 .. raw:: html
 

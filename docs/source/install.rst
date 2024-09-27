@@ -15,7 +15,7 @@ We provide a Helm chart for installing LLMariner. You can obtain the Helm chart 
      --values <values.yaml>
 
 Once installation completes, you can interact with the API endpoint using the `OpenAI Python library <https://github.com/openai/openai-python>`_, running our CLI,
-or direclty hitting the endpoint. To download the CLI, run:
+or directly hitting the endpoint. To download the CLI, run:
 
 .. code-block:: console
 
@@ -34,7 +34,7 @@ Prerequisites
 
 LLMariner requires the following resources:
 
-- `Nvida GPU Operator <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html>`_
+- `Nvidia GPU Operator <https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html>`_
 - Ingress controller (to route API requests)
 - SQL database (to store jobs/models/files metadata)
 - S3-compatible object store (to store training files and models)
@@ -43,7 +43,7 @@ LLMariner requires the following resources:
 LLMariner can process inference requests on CPU nodes, but it can be best used with GPU nodes. Nvidia GPU Operator is required to install the device plugin and
 make GPUs visible in the K8s cluster.
 
-Preferably the ingress controller should have a DNS name or a IP that is reachable from the outside of the EKS cluster. If not, you can rely on
+Preferably the ingress controller should have a DNS name or an IP that is reachable from the outside of the EKS cluster. If not, you can rely on
 port-forwarding to reach the API endpoints.
 
 .. note::
@@ -350,7 +350,7 @@ We will create an S3 bucket where model files are stored. Here is an example
    aws s3api create-bucket --bucket "${S3_BUCKET_NAME}" --region "${S3_REGION}"
 
 Pods running in the EKS cluster need to be able to access the S3 bucket. We will create an
-`IAM role for servie account <https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html>`_ for that.
+`IAM role for service account <https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html>`_ for that.
 
 .. code-block:: console
 
@@ -599,7 +599,7 @@ If you would like to install Prometheus and Grafana to see GPU utilization, run:
 Optional: Enable TLS
 ^^^^^^^^^^^^^^^^^^^^
 
-First follow `Cert Manager installation document <https://cert-manager.io/Doc/>`_ and install Cert Manager to your K8s cluster if you don't have.
+First follow the `Cert Manager installation document <https://cert-manager.io/Doc/>`_ and install Cert Manager to your K8s cluster if you don't have one.
 Then create a ``ClusterIssuer`` for your domain. Here is an example manifest that uses Let's Encrypt.
 
 .. code-block:: yaml

@@ -2,7 +2,7 @@ Jupyter Notebook
 ================
 
 LLMariner allows users to run a Jupyter Notebook in a Kubernetes cluster. This functionality
-is useful when users want to run ad-hoc Python scripts that requires GPU.
+is useful when users want to run ad-hoc Python scripts that require GPU.
 
 
 Creating a Jupyter Notebook
@@ -14,7 +14,7 @@ To create a Jupyter Notebook, run:
 
    llmo workspace notebooks create my-notebook
 
-By default, there is no GPU is allocated to the Jupyter Notebook.
+By default, there is no GPU allocated to the Jupyter Notebook.
 If you want to allocate a GPU to the Jupyter Notebook, run:
 
 .. code-block:: console
@@ -59,9 +59,9 @@ OpenAI API Integration
 ----------------------
 
 Jupyter Notebook can be integrated with OpenAI API. Created Jupyter Notebook is pre-configured with OpenAI API URL and API key.
-All you need to do is to install the `openai` package.
+All you need to do is to install the ``openai`` package.
 
-To install `openai` package, run the following command in the Jupyter Notebook terminal:
+To install ``openai`` package, run the following command in the Jupyter Notebook terminal:
 
 .. code-block:: console
 
@@ -69,7 +69,7 @@ To install `openai` package, run the following command in the Jupyter Notebook t
 
 .. image:: images/jupyter_notebook_terminal.png
 
-Now, you can use OpenAI API in the Jupyter Notebook. Here is an example of using OpenAI API in the Jupyter Notebook:
+Now, you can use the OpenAI API in the Jupyter Notebook. Here is an example of using OpenAI API in the Jupyter Notebook:
 
 .. code-block:: python
 

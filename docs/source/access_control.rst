@@ -40,7 +40,7 @@ The following summarizes how these role implements the access control:
 - A user can manage organization `O` (e.g., add a new member) if the user is an ``owner`` of `O`.
 - A user can create a new organization if the user is an ``owner`` of the initial organization that is created by default.
 
-Please note that a user who has organization role ``reader`` role cannot access resources in the organization unless the user is
+Please note that a user who has the ``reader`` organization role cannot access resources in the organization unless the user is
 added to a project in the organization.
 
 

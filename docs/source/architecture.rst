@@ -32,22 +32,16 @@ LLMariner has dependency to the following components:
 
 Ingress controller is required to route traffic to each service. SQL database and S3-compatible object store
 are used to persist metadata (e.g., fine-tuning jobs), fine-tuned models, and training/validation files.
-Dex is to used to provide authentication.
+Dex is used to provide authentication.
 
 
 Key Technologies
 ----------------
 
-Quota Management for Fine-tuning Jobs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-LLMariner allows uses to manage GPU quotas with integration with `Kueue <https://github.com/kubernetes-sigs/kueue>`_.
-
-
-Autoscaling and Dynamic Model Loading/offloading in Inference
+Autoscaling and Dynamic Model Loading in Inference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Inference Manager dynamically loads and offloads models up on requests it receives. It also dynamically auto-scales
+Inference Manager dynamically loads models up on requests it receives. It also dynamically auto-scales
 pods based on demand.
 
 
@@ -66,3 +60,8 @@ to the `agent` using one of the established connections. Then the `agent` forwar
 This architecture enables the deployment where the `server` and the `agent` can run in separate Kubernetes clusters. As
 the `agent` initiates a connection (not the `server`), there is no need to open incoming traffic at the cluster where the `agent` runs.
 An ingress controller is still the only place where incoming traffic is sent.
+
+Quota Management for Fine-tuning Jobs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+LLMariner allows users to manage GPU quotas with integration with `Kueue <https://github.com/kubernetes-sigs/kueue>`_.
