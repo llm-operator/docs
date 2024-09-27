@@ -647,7 +647,7 @@ and spec:
    kind: Ingress
    metadata:
      annotations:
-       cert-manager.io/cluster-issuer: letsencrypt-prod
+       cert-manager.io/cluster-issuer: letsencrypt
    ...
    spec:
      tls:
