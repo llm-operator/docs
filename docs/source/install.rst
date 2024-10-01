@@ -290,9 +290,10 @@ We will create an RDS in the same VPC as the EKS cluster so that it can be reach
      --db-instance-identifier "${DB_INSTANCE_ID}" \
      --db-instance-class db.t3.small \
      --engine postgres \
+     --allocated-storage 10 \
+     --storage-encrypted \
      --master-username "${POSTGRES_USER}" \
      --master-user-password "${POSTGRES_PASSWORD}" \
-     --allocated-storage 10 \
      --vpc-security-group-ids "${EKS_SECURITY_GROUP_ID}" \
      --db-subnet-group-name "${DB_SUBNET_GROUP_NAME}"
 
