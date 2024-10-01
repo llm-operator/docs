@@ -353,6 +353,7 @@ We will create an S3 bucket where model files are stored. Here is an example
 If you want to set up Milvus for RAG, please create another S3 bucket for Milvus:
 
 .. code-block:: console
+
    # Please change the bucket name to something else.
    export MILVUS_S3_BUCKET_NAME="llm-operator-demo-milvus"
 
