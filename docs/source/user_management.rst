@@ -5,7 +5,7 @@ LLMariner installs `Dex <https://github.com/dexidp/dex>`_ by default. Dex is an
 identity service that uses `OpenID Connect <https://openid.net/developers/how-connect-works/>`_
 for authentication.
 
-The Helm chart for Dex is located at https://github.com/llm-operator/rbac-manager/tree/main/deployments/dex-server. It
+The Helm chart for Dex is located at https://github.com/llmariner/rbac-manager/tree/main/deployments/dex-server. It
 uses a `built-in local connector <https://dexidp.io/docs/connectors/local/>`_ and has the following configuration by default:
 
 .. code-block:: yaml
