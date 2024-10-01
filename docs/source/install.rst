@@ -77,9 +77,12 @@ are required for S3:
 The rest of the section go through concrete steps to create an EKS cluster, create necessary resources, and install LLMariner. You can
 skip some of the steps if you have already made necessary installation/setup.
 
+Step 1. Provision an EKS cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Step 1. Provision EKS cluster with Karpenter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Step 1.1. Create a new cluster with Karpenter
+"""""""""""""""""""""""""""""""""""""""""""""
 
 Follow the `Karpenter getting started guide <https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/>`_ and
 create an EKS cluster and add Karpenter. The following is the installation step copied from the page (with slight simplification).
@@ -159,8 +162,8 @@ create an EKS cluster and add Karpenter. The following is the installation step 
      --set controller.resources.limits.cpu=1 \
      --set controller.resources.limits.memory=1Gi
 
-Step 2. Provision GPU nodes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 1.2. Provision GPU nodes
+"""""""""""""""""""""""""""""
 
 Once Karpenter is installed, we need to create an ``EC2NodeClass`` and a ``NodePool`` so that GPU nodes are provisioned.
 We configure ``blockDeviceMappings`` in the ``EC2NodeClass`` definition so that nodes have sufficient local storage to store model files.
@@ -224,8 +227,8 @@ We configure ``blockDeviceMappings`` in the ``EC2NodeClass`` definition so that 
    EOF
 
 
-Step 3. Install Nvidia GPU Operator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 1.3. Install Nvidia GPU Operator
+"""""""""""""""""""""""""""""""""""""
 
 Nvidia GPU Operator is required to install the device plugin and make GPU resources visible in the K8s cluster. Run:
 
@@ -242,8 +245,8 @@ Nvidia GPU Operator is required to install the device plugin and make GPU resour
      --set toolkit.enabled=false
 
 
-Step 4. Install an ingress controller
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 1.4. Install an ingress controller
+"""""""""""""""""""""""""""""""""""""""
 
 An ingress controller is required to route HTTP/HTTPS requests to the LLMariner components. Any ingress
 controller works, and you can skip this step if your EKS cluster already has an ingress controller.
@@ -264,7 +267,7 @@ via AWS loadbalancer:
      --set fullnameOverride=false
 
 
-Step 5. Create an RDS instance
+Step 2. Create an RDS instance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will create an RDS in the same VPC as the EKS cluster so that it can be reachable from the LLMariner components. Here is an example command for creating a DB subnet group and an RDS instance.
@@ -337,7 +340,7 @@ If ``psq`` can successfully connect to the RDS instance, create a K8s secret in 
    You can see all created databases by running ``SELECT count(datname) FROM pg_database;``.
 
 
-Step 6. Create an S3 bucket
+Step 3. Create an S3 bucket
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We will create an S3 bucket where model files are stored. Here is an example
@@ -400,7 +403,7 @@ Pods running in the EKS cluster need to be able to access the S3 bucket. We will
      --attach-policy-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:policy/${LLM_OPERATOR_POLICY}" --approve
 
 
-Step 7. Install Milvus
+Step 4. Install Milvus
 ^^^^^^^^^^^^^^^^^^^^^^
 
 Install `Milvus <https://milvus.io/>`_ as it is used a backend vector database for RAG.
@@ -479,7 +482,7 @@ Please see the `Milvus installation document <https://milvus.io/docs/install-ove
 for other installation options.
 
 
-Step 8. Install LLMariner
+Step 5. Install LLMariner
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
@@ -603,7 +606,7 @@ If you would like to install only the control-plane components or the worker-pla
 :doc:`multi_cluster_deployment`.
 
 
-Step 9. Verify the installation
+Step 6. Verify the installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can verify the installation by sending sample chat completion requests.
