@@ -16,26 +16,17 @@ GPU specific clouds like CoreWeave) and on-prem.
 Deploying Control Plane Components
 ----------------------------------
 
-You can deploy only Control Plane components by setting ``tags.worker=false``:
+You can deploy only Control Plane components by specifying additional parameters the LLMariner helm chart.
 
-.. code-block:: console
-
-   helm upgrade \
-     --install \
-     --create-namespace \
-     --namespace <namespace> \
-     llm-operator \
-     oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
-     --values <values.yaml> \
-     --set tags.worker=false
-
-
-In the ``values.yaml``, you need to set ``global.workerServiceIngress.create`` to ``true`` and other values so that
+In the ``values.yaml``, you need to set ``tag.worker`` to ``false``, ``global.workerServiceIngress.create`` to ``true``, and set other values so that
 an ingress and a service are created to receive requests from worker nodes.
 
 Here is an example ``values.yaml``.
 
 .. code-block:: yaml
+
+   tag:
+     worker: false
 
    global:
      ingress:
@@ -117,10 +108,12 @@ To make that happen, you first need to create a K8s secret.
 
 The secret needs to be created in a namespace where LLMariner will be deployed.
 
-When installing the Helm chart for the worker components, you need to specify addition configurations in ``values.yaml``.
-Here is an example.
+When installing the Helm chart for the worker components, you need to specify addition configurations in ``values.yaml``. Here is an example.
 
 .. code-block:: yaml
+
+   tag:
+     control-plane: false
 
    global:
      worker:
@@ -140,19 +133,3 @@ Here is an example.
 
    session-manager-agent:
      sessionManagerServerWorkerServiceAddr: session.llm.mydomain.com:443
-
-
-``tags.control-plane=false`` also needs to be set:
-
-.. code-block:: console
-
-   helm upgrade \
-     --install \
-     --create-namespace \
-     --namespace <namespace> \
-     llm-operator \
-     oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
-     --values <values.yaml> \
-     --set tags.control-plane=false
-
-Please see `this GitHub repository <https://github.com/llm-operator/llm-operator/tree/main/hack/multi-cluster>`_ for an example setup.
