@@ -27,12 +27,12 @@ To install ``kubernetes.core.k8s`` module, run the following command:
 Step 2: Clone the LLMariner Repository
 --------------------------------------
 
-We use the Terraform configuration and Ansible playbook in the `LLMariner repository <https://github.com/llm-operator/llm-operator>`_.
+We use the Terraform configuration and Ansible playbook in the `LLMariner repository <https://github.com/llmariner/llmariner>`_.
 Run the following commands to clone the repo and move to the directory where the Terraform configuration file is stored.
 
 .. code-block:: console
 
-   git clone https://github.com/llm-operator/llm-operator.git
+   git clone https://github.com/llmariner/llmariner.git
    cd llm-operator/aws
 
 

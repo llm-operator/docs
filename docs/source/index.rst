@@ -6,7 +6,7 @@ Welcome to LLMariner Documentation!
 .. raw:: html
 
    <p style="text-align:center">
-   <a class="github-button" href="https://github.com/llm-operator/llm-operator" data-show-count="true" data-size="large" aria-label="Star llm-operator/llm-operator on GitHub">Star</a>
+   <a class="github-button" href="https://github.com/llmariner/llmariner" data-show-count="true" data-size="large" aria-label="Star llm-operator/llm-operator on GitHub">Star</a>
    <script async defer src="https://buttons.github.io/buttons.js"></script>
    </p>
 
