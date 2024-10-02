@@ -51,7 +51,7 @@ If you want to hit the API endpoint directly, you can use ``curl``. Here is an e
 
    curl \
      --request POST \
-     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Authorization: Bearer ${LLMARINER_TOKEN}" \
      --header "Content-Type: application/json" \
      --data '{"model": "google-gemma-2b-it-q4_0", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
      http://localhost:8080/v1/chat/completions

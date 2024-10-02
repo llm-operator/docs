@@ -54,13 +54,13 @@ The login credentials are obtained by the following commands:
 Deploying MLflow Deployments Server for LLMs
 --------------------------------------------
 
-We have an example K8s YAML for deploying a MLflow deployments server `here <https://raw.githubusercontent.com/llm-operator/llm-operator/main/hack/mlflow/deployment-server.yaml>`_.
+We have an example K8s YAML for deploying a MLflow deployments server `here <https://raw.githubusercontent.com/llmariner/llmariner/main/hack/mlflow/deployment-server.yaml>`_.
 
 You can save it locally, up ``openai_api_base`` in the ``ConfigMap`` definition based on your ingress controller address, and then run:
 
 .. code-block:: console
 
-   kubectl create secret generic -n mlflow llm-operator-api-key \
+   kubectl create secret generic -n mlflow llmariner-api-key \
      --from-literal=secret=<Your API key>
 
    kubectl apply -n mlflow -f deployment-server.yaml

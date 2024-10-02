@@ -101,7 +101,7 @@ To make that happen, you first need to create a K8s secret.
    REGISTRATION_KEY=clusterkey-...
 
    kubectl create secret generic \
-     -n llm-operator \
+     -n llmariner \
      cluster-registration-key \
      --from-literal=regKey="${REGISTRATION_KEY}"
 

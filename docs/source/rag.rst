@@ -18,7 +18,7 @@ Here is an example script with the OpenAI Python library:
      api_key="<LLMariner API key>"
    )
 
-   filename = "llm_operator_overview.txt"
+   filename = "llmariner_overview.txt"
    with open(filename, "w") as fp:
      fp.write("LLMariner builds a software stack that provides LLM as a service. It provides the OpenAI-compatible API.")
    file = client.files.create(
@@ -82,7 +82,7 @@ If you want to hit the API endpoint directly, you can use ``curl``. Here is an e
 
    curl \
      --request POST \
-     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Authorization: Bearer ${LLMARINER_TOKEN}" \
      --header "Content-Type: application/json" \
      --data '{
       "model": "google-gemma-2b-it-q4_0",
@@ -118,7 +118,7 @@ Here are examples:
 
    curl \
      --request POST \
-     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Authorization: Bearer ${LLMARINER_TOKEN}" \
      --header "Content-Type: application/json" \
      --data '{
       "model": "sentence-transformers-all-MiniLM-L6-v2-f16",
