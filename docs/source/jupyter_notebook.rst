@@ -12,14 +12,14 @@ To create a Jupyter Notebook, run:
 
 .. code-block:: console
 
-   llmo workspace notebooks create my-notebook
+   llma workspace notebooks create my-notebook
 
 By default, there is no GPU allocated to the Jupyter Notebook.
 If you want to allocate a GPU to the Jupyter Notebook, run:
 
 .. code-block:: console
 
-   llmo workspace notebooks create my-gpu-notebook --gpu 1
+   llma workspace notebooks create my-gpu-notebook --gpu 1
 
 There are other options that you can specify when creating a Jupyter Notebook, such as environment.
 You can see the list of options by using the `--help` flag.
@@ -29,7 +29,7 @@ Once the Jupyter Notebook is created, you can access it by running:
 .. code-block:: console
 
    # Open the Jupyter Notebook in your browser
-   llmo workspace notebooks open my-notebook
+   llma workspace notebooks open my-notebook
 
 
 Stopping and Restarting a Jupyter Notebook
@@ -39,20 +39,20 @@ To stop a Jupyter Notebook, run:
 
 .. code-block:: console
 
-   llmo workspace notebooks stop my-notebook
+   llma workspace notebooks stop my-notebook
 
 To restart a Jupyter Notebook, run:
 
 .. code-block:: console
 
-   llmo workspace notebooks start my-notebook
+   llma workspace notebooks start my-notebook
 
 You can check the current status of the Jupyter Notebook by running:
 
 .. code-block:: console
 
-   llmo workspace notebooks list
-   llmo workspace notebooks get my-notebook
+   llma workspace notebooks list
+   llma workspace notebooks get my-notebook
 
 
 OpenAI API Integration

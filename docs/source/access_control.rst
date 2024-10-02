@@ -48,7 +48,7 @@ added to a project in the organization.
 Creating Organizations and Projects
 -----------------------------------
 
-You can use CLI ``llmo`` to create a new organization and a project.
+You can use CLI ``llma`` to create a new organization and a project.
 
 Creating a new Organization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -57,7 +57,7 @@ You can run the following command to create a new organization.
 
 .. code-block:: console
 
-   llmo admin organizations create <organization title>
+   llma admin organizations create <organization title>
 
 .. note::
 
@@ -67,13 +67,13 @@ You can confirm that the new organization is created by running:
 
 .. code-block:: console
 
-   llmo admin organizations list
+   llma admin organizations list
 
 Then you can add a user member to the organization.
 
 .. code-block:: console
 
-   llmo admin organizations add-member <organization title> --email <email-address of the member> --role <role>
+   llma admin organizations add-member <organization title> --email <email-address of the member> --role <role>
 
 The role can be either ``owner`` or ``reader``.
 
@@ -81,7 +81,7 @@ You can confirm organization members by running:
 
 .. code-block:: console
 
-   llmo admin organizations list-members <organization title>
+   llma admin organizations list-members <organization title>
 
 
 Creating a new Project
@@ -91,19 +91,19 @@ You can take a similar flow to create a new project. To create a new project, ru
 
 .. code-block:: console
 
-   llmo admin projects create --title <project title> --organization-title <organization title>
+   llma admin projects create --title <project title> --organization-title <organization title>
 
 To confirm the project is created, run:
 
 .. code-block:: console
 
-   llmo admin projects list
+   llma admin projects list
 
 Then you can add a user member to the project.
 
 .. code-block:: console
 
-   llmo admin projects add-member <project title> --email <email-address of the member> --role <role>
+   llma admin projects add-member <project title> --email <email-address of the member> --role <role>
 
 The role can be either ``owner`` or ``member``.
 
@@ -111,34 +111,34 @@ You can confirm project members by running:
 
 .. code-block:: console
 
-   llmo admin projects list-members --title <project title> --organization-title <organization title>
+   llma admin projects list-members --title <project title> --organization-title <organization title>
 
 If you want to manage a project in a different organization, you can pass ``--organization-title <title>`` in each command. Otherwise, the
 organization in the current context is used. You can also change the current context by running:
 
 .. code-block:: console
 
-   llmo context set
+   llma context set
 
 
 Choosing an Organization and a Project
 --------------------------------------
 
-You can use `llmo context set` to set the current context.
+You can use ``llma context set`` to set the current context.
 
 .. code-block:: console
 
-   llmo context set
+   llma context set
 
 
-Then the selected context is applied to CLI commands (e.g., ``llmo models list``).
+Then the selected context is applied to CLI commands (e.g., ``llma models list``).
 
 When you create a new API key, the key will be associated with the project in the current context. Suppose that
 a user runs the following commands:
 
 .. code-block:: console
 
-   llmo context set # Choose project my-project
-   llmo auth api-keys create my-key
+   llma context set # Choose project my-project
+   llma auth api-keys create my-key
 
 The newly created API key is associated with project ``my-project``.
