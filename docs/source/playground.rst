@@ -33,7 +33,7 @@ Run the following commands to clone the repo and move to the directory where the
 .. code-block:: console
 
    git clone https://github.com/llmariner/llmariner.git
-   cd llm-operator/aws
+   cd llmariner/aws
 
 
 Step 3: Run Terraform
@@ -43,7 +43,7 @@ First create a ``local.tfvars`` file for your deployment. Here is an example.
 
 .. code-block:: console
 
-   project_name = "<instance-name> (default: "llm-operator-demo")"
+   project_name = "<instance-name> (default: "llmariner-demo")"
    profile      = "<aws-profile>"
 
    public_key_path  = "</path/to/public_key_path>"
@@ -132,7 +132,7 @@ in the environment variable to use that in the following step:
 
 .. code-block:: console
 
-     export LLM_OPERATOR_TOKEN=<Secret obtained from llmo auth api-keys create>
+     export LLMARINER_TOKEN=<Secret obtained from llmo auth api-keys create>
 
 
 Step 6: Interact with the LLM Service
@@ -152,13 +152,13 @@ The first option is to use the CLI. Here are example commands:
 .. code-block:: console
 
    curl \
-     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Authorization: Bearer ${LLMARINER_TOKEN}" \
      --header "Content-Type: application/json" \
      http://localhost:8080/v1/models | jq
 
    curl \
      --request POST \
-     --header "Authorization: Bearer ${LLM_OPERATOR_TOKEN}" \
+     --header "Authorization: Bearer ${LLMARINER_TOKEN}" \
      --header "Content-Type: application/json" \
      --data '{"model": "google-gemma-2b-it-q4_0", "messages": [{"role": "user", "content": "What is k8s?"}]}' \
      http://localhost:8080/v1/chat/completions
@@ -175,7 +175,7 @@ The third option is to use Python. Here is an example Python code for hitting th
 
    client = OpenAI(
      base_url="http://localhost:8080/v1",
-     api_key=environ["LLM_OPERATOR_TOKEN"]
+     api_key=environ["LLMARINER_TOKEN"]
    )
 
    completion = client.chat.completions.create(

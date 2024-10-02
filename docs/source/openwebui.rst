@@ -12,7 +12,7 @@ Here is an instruction for running Open WebUI in a Kubernetes cluster.
    OPEN_API_BASE_URL=<LLMariner API endpoint>
 
    kubectl create namespace open-webui
-   kubectl create secret generic -n open-webui llm-operator-api-key --from-literal=key=${OPENAI_API_KEY}
+   kubectl create secret generic -n open-webui llmariner-api-key --from-literal=key=${OPENAI_API_KEY}
 
    kubectl apply -f - <<EOF
    apiVersion: apps/v1
@@ -44,7 +44,7 @@ Here is an instruction for running Open WebUI in a Kubernetes cluster.
            - name: OPENAI_API_KEYS
              valueFrom:
                secretKeyRef:
-                 name: llm-operator-api-key
+                 name: llmariner-api-key
                  key: key
    ---
    apiVersion: v1

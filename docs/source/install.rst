@@ -11,7 +11,7 @@ We provide a Helm chart for installing LLMariner. You can obtain the Helm chart 
    helm upgrade --install \
      --namespace <namespace> \
      --create-namespace \
-     llm-operator oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
+     llmariner oci://public.ecr.aws/cloudnatix/llmariner-charts/llmariner \
      --values <values.yaml>
 
 Once installation completes, you can interact with the API endpoint using the `OpenAI Python library <https://github.com/openai/openai-python>`_, running our CLI,
@@ -89,7 +89,7 @@ create an EKS cluster and add Karpenter. The following is the installation step 
 
 .. code-block:: console
 
-   export CLUSTER_NAME="llm-operator-demo"
+   export CLUSTER_NAME="llmariner-demo"
    export AWS_DEFAULT_REGION="us-east-1"
    export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 
@@ -274,7 +274,7 @@ We will create an RDS in the same VPC as the EKS cluster so that it can be reach
 
 .. code-block:: console
 
-   export DB_SUBNET_GROUP_NAME="llm-operator-demo-db-subnet"
+   export DB_SUBNET_GROUP_NAME="llmariner-demo-db-subnet"
    export EKS_SUBNET_IDS=$(aws eks describe-cluster --name "${CLUSTER_NAME}" | jq '.cluster.resourcesVpcConfig.subnetIds | join(" ")' --raw-output)
    export EKS_SUBNET_ID0=$(echo ${EKS_SUBNET_IDS} | cut -d' ' -f1)
    export EKS_SUBNET_ID1=$(echo ${EKS_SUBNET_IDS} | cut -d' ' -f2)
@@ -284,7 +284,7 @@ We will create an RDS in the same VPC as the EKS cluster so that it can be reach
      --db-subnet-group-description "LLMariner Demo" \
      --subnet-ids "${EKS_SUBNET_ID0}" "${EKS_SUBNET_ID1}"
 
-   export DB_INSTANCE_ID="llm-operator-demo"
+   export DB_INSTANCE_ID="llmariner-demo"
    export POSTGRES_USER="admin_user"
    export POSTGRES_PASSWORD="secret_password"
    export EKS_SECURITY_GROUP_ID=$(aws eks describe-cluster --name "${CLUSTER_NAME}" | jq '.cluster.resourcesVpcConfig.clusterSecurityGroupId' --raw-output)
@@ -324,15 +324,15 @@ You can verify if the DB instance is reachable from the EKS cluster by running t
    kubectl delete pods psql
 
 
-If ``psq`` can successfully connect to the RDS instance, create a K8s secret in the ``llm-operator`` namespace so that later LLMariner can retrieve the database password from the secret.
+If ``psq`` can successfully connect to the RDS instance, create a K8s secret in the ``llmariner`` namespace so that later LLMariner can retrieve the database password from the secret.
 
 .. code-block:: console
 
-   export LLM_OPERATOR_NAMESPACE=llm-operator
+   export LLMARINER_NAMESPACE=llmariner
    export POSTGRES_SECRET_NAME=postgres
 
-   kubectl create namespace "${LLM_OPERATOR_NAMESPACE}"
-   kubectl create secret generic -n "${LLM_OPERATOR_NAMESPACE}" "${POSTGRES_SECRET_NAME}" --from-literal=password="${POSTGRES_PASSWORD}"
+   kubectl create namespace "${LLMARINER_NAMESPACE}"
+   kubectl create secret generic -n "${LLMARINER_NAMESPACE}" "${POSTGRES_SECRET_NAME}" --from-literal=password="${POSTGRES_PASSWORD}"
 
 .. note::
 
@@ -348,7 +348,7 @@ We will create an S3 bucket where model files are stored. Here is an example
 .. code-block:: console
 
    # Please change the bucket name to something else.
-   export S3_BUCKET_NAME="llm-operator-demo"
+   export S3_BUCKET_NAME="llmariner-demo"
    export S3_REGION="us-east-1"
 
    aws s3api create-bucket --bucket "${S3_BUCKET_NAME}" --region "${S3_REGION}"
@@ -358,7 +358,7 @@ If you want to set up Milvus for RAG, please create another S3 bucket for Milvus
 .. code-block:: console
 
    # Please change the bucket name to something else.
-   export MILVUS_S3_BUCKET_NAME="llm-operator-demo-milvus"
+   export MILVUS_S3_BUCKET_NAME="llmariner-demo-milvus"
 
    aws s3api create-bucket --bucket "${MILVUS_S3_BUCKET_NAME}" --region "${S3_REGION}"
 
@@ -391,16 +391,16 @@ Pods running in the EKS cluster need to be able to access the S3 bucket. We will
    }
    EOF
 
-   export LLM_OPERATOR_POLICY="LLMOperatorPolicy"
-   aws iam create-policy --policy-name "${LLM_OPERATOR_POLICY}" --policy-document file://policy.json
+   export LLMARINER_POLICY="LLMOperatorPolicy"
+   aws iam create-policy --policy-name "${LLMARINER_POLICY}" --policy-document file://policy.json
 
-   export LLM_OPERATOR_SERVICR_ACCOUNT_NAME="llm-operator"
+   export LLMARINER_SERVICR_ACCOUNT_NAME="llmariner"
    eksctl create iamserviceaccount \
-     --name "${LLM_OPERATOR_SERVICR_ACCOUNT_NAME}" \
-     --namespace "${LLM_OPERATOR_NAMESPACE}" \
+     --name "${LLMARINER_SERVICR_ACCOUNT_NAME}" \
+     --namespace "${LLMARINER_NAMESPACE}" \
      --cluster "${CLUSTER_NAME}" \
      --role-name "LLMOperatorRole" \
-     --attach-policy-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:policy/${LLM_OPERATOR_POLICY}" --approve
+     --attach-policy-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:policy/${LLMARINER_POLICY}" --approve
 
 
 Step 4. Install Milvus
@@ -457,7 +457,7 @@ Milvus in the same namespace as LLMariner.
 
    serviceAccount:
      create: false
-     name: "${LLM_OPERATOR_SERVICR_ACCOUNT_NAME}"
+     name: "${LLMARINER_SERVICR_ACCOUNT_NAME}"
 
    externalS3:
      enabled: true
@@ -474,7 +474,7 @@ Milvus in the same namespace as LLMariner.
    helm repo add zilliztech https://zilliztech.github.io/milvus-helm/
    helm repo update
    helm upgrade --install --wait \
-     --namespace "${LLM_OPERATOR_NAMESPACE}" \
+     --namespace "${LLMARINER_NAMESPACE}" \
      milvus zilliztech/milvus \
      -f milvus-values.yaml
 
@@ -490,7 +490,7 @@ Step 5. Install LLMariner
    # Set the endpoint URL of LLMariner. Please change if you are using a different ingress controller.
    export INGRESS_CONTROLLER_URL=http://$(kubectl get services -n kong kong-proxy-kong-proxy  -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 
-   cat << EOF | envsubst > llm-operator-values.yaml
+   cat << EOF | envsubst > llmariner-values.yaml
    global:
      # This is an ingress configuration with Kong. Please change if you are using a different ingress controller.
      ingress:
@@ -522,12 +522,12 @@ Step 5. Install LLMariner
    file-manager-server:
      serviceAccount:
        create: false
-       name: "${LLM_OPERATOR_SERVICE_ACCOUNT_NAME}"
+       name: "${LLMARINER_SERVICE_ACCOUNT_NAME}"
 
    inference-manager-engine:
      serviceAccount:
        create: false
-       name: "${LLM_OPERATOR_SERVICE_ACCOUNT_NAME}"
+       name: "${LLMARINER_SERVICE_ACCOUNT_NAME}"
      model:
        default:
          runtimeName: vllm
@@ -560,7 +560,7 @@ Step 5. Install LLMariner
    job-manager-dispatcher:
      serviceAccount:
        create: false
-       name: "${LLM_OPERATOR_SERVICE_ACCOUNT_NAME}"
+       name: "${LLMARINER_SERVICE_ACCOUNT_NAME}"
      notebook:
        # Used to set the base URL of the API endpoint. This can be same as global.ingress.controllerUrl
        # if the URL is reachable from the inside cluster. Otherwise you can change this to the
@@ -570,7 +570,7 @@ Step 5. Install LLMariner
    model-manager-loader:
      serviceAccount:
        create: false
-       name: "${LLM_OPERATOR_SERVICE_ACCOUNT_NAME}"
+       name: "${LLMARINER_SERVICE_ACCOUNT_NAME}"
      baseModels:
      - meta-llama/Meta-Llama-3.1-8B-Instruct-q4_0
      - google/gemma-2b-it-q4_0
@@ -580,17 +580,17 @@ Step 5. Install LLMariner
    vector-store-manager-server:
      serviceAccount:
        create: false
-       name: "${LLM_OPERATOR_SERVICE_ACCOUNT_NAME}"
+       name: "${LLMARINER_SERVICE_ACCOUNT_NAME}"
      vectorDatabase:
        host: milvus
      llmEngineAddr: ollama-sentence-transformers-all-minilm-l6-v2-f16:11434
    EOF
 
    helm upgrade --install \
-     --namespace llm-operator \
+     --namespace llmariner \
      --create-namespace \
-     llm-operator oci://public.ecr.aws/cloudnatix/llm-operator-charts/llm-operator \
-     -f llm-operator-values.yaml
+     llmariner oci://public.ecr.aws/cloudnatix/llmariner-charts/llmariner \
+     -f llmariner-values.yaml
 
 .. note::
 
@@ -641,7 +641,7 @@ If you would like to install Prometheus and Grafana to see GPU utilization, run:
    - job_name: inference-manager-engine-metrics
      scrape_interval: 5s
      static_configs:
-     - targets: ['inference-manager-server-http.llm-operator.svc:8083']
+     - targets: ['inference-manager-server-http.llmariner.svc:8083']
    EOF
    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
    helm repo update
