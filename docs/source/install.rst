@@ -324,7 +324,7 @@ You can verify if the DB instance is reachable from the EKS cluster by running t
    kubectl delete pods psql
 
 
-If ``psq`` can successfully connect to the RDS instance, create a K8s secret in the ``llmariner`` namespace so that later LLMariner can retrieve the database password from the secret.
+If ``psql`` can successfully connect to the RDS instance, create a K8s secret in the ``llmariner`` namespace so that later LLMariner can retrieve the database password from the secret.
 
 .. code-block:: console
 
@@ -565,7 +565,7 @@ Step 5. Install LLMariner
        # Used to set the base URL of the API endpoint. This can be same as global.ingress.controllerUrl
        # if the URL is reachable from the inside cluster. Otherwise you can change this to the
        # to the URL of the ingress controller that is reachable inside the K8s cluster.
-       llmOperatorBaseUrl: "${INGRESS_CONTROLLER_URL}"/v1
+       llmarinerBaseUrl: "${INGRESS_CONTROLLER_URL}"/v1
 
    model-manager-loader:
      serviceAccount:
