@@ -29,7 +29,7 @@ You can check the status of the job by running the following command.
 Debugging a Training Job
 ------------------------
 
-You can use the `llma` CLI to check the logs of a training job.
+You can use the ``llma`` CLI to check the logs of a training job.
 
 .. code-block:: console
 
