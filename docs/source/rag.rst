@@ -113,7 +113,7 @@ Here are examples:
 
 .. code-block:: console
 
-   llmo embeddings create --model intfloat-e5-mistral-7b-instruct --input "sample text"
+   llma embeddings create --model intfloat-e5-mistral-7b-instruct --input "sample text"
 
 
    curl \

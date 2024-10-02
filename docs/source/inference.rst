@@ -3,22 +3,22 @@ Inference with Open Models
 
 Users can run chat completion with open models such as Google Gemma,
 LLama, Mistral, etc. To run chat completion, users can use the OpenAI
-Python library, ``llmo`` CLI, or API endpoint.
+Python library, ``llma`` CLI, or API endpoint.
 
 
-Here is an example chat completion command with the ``llmo`` CLI.
+Here is an example chat completion command with the ``llma`` CLI.
 
 .. code-block:: console
 
 
-   llmo chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "What is k8s?"
+   llma chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "What is k8s?"
 
 
 If you want to use the Python library, you first need to create an API key:
 
 .. code-block:: console
 
-   llmo auth api-keys create <key name>
+   llma auth api-keys create <key name>
 
 
 You can then pass the API key to initialize the OpenAI client and run the completion:

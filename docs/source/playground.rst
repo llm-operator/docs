@@ -108,17 +108,17 @@ and obtain the API key.
 
    # Download the binary.
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.126.0/"${ARCH}"/llmo
-   chmod u+x ./llmo
+   curl --remote-name http://llmariner-artifacts.s3.amazonaws.com/artifacts/cli/0.132.0/"${ARCH}"/llma
+   chmod u+x ./llma
 
    # Login. Please see below for the details.
-   ./llmo auth login
+   ./llma auth login
 
    # Create an API key.
-   ./llmo auth api-keys create my-key
+   ./llma auth api-keys create my-key
 
 
-``llmo auth login`` will ask for the endpoint URL and the issuer URL. Please use the default values for them
+``llma auth login`` will ask for the endpoint URL and the issuer URL. Please use the default values for them
 (``http://localhost:8080/v1`` and ``http://kong-proxy.kong/v1/dex``).
 
 Then the command will open a web browser to login. Please use the following username and the password.
@@ -126,13 +126,13 @@ Then the command will open a web browser to login. Please use the following user
 * Username: ``admin@example.com``
 * Password: ``password``
 
-The output of ``llmo auth api-keys create`` contains the secret of the created API key. Please save the value
+The output of ``llma auth api-keys create`` contains the secret of the created API key. Please save the value
 in the environment variable to use that in the following step:
 
 
 .. code-block:: console
 
-     export LLMARINER_TOKEN=<Secret obtained from llmo auth api-keys create>
+     export LLMARINER_TOKEN=<Secret obtained from llma auth api-keys create>
 
 
 Step 6: Interact with the LLM Service
@@ -144,9 +144,9 @@ The first option is to use the CLI. Here are example commands:
 
 .. code-block:: console
 
-   ./llmo models list
+   ./llma models list
 
-   ./llmo chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "What is k8s?"
+   ./llma chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "What is k8s?"
 
 
 .. code-block:: console

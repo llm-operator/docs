@@ -32,7 +32,7 @@ that uploads a training file and uses that to run a fine-tuning job.
 
 Once a fine-tuning job is submitted, a k8s Job is created. A Job runs in a namespace where a user's project is associated.
 
-You can check the status of the job with the Python script or the `llmo` CLI.
+You can check the status of the job with the Python script or the ``llma`` CLI.
 
 .. code-block:: python
 
@@ -40,8 +40,8 @@ You can check the status of the job with the Python script or the `llmo` CLI.
 
 .. code-block:: console
 
-   llmo fine-tuning jobs list
-   llmo fine-tuning jobs get <job-id>
+   llma fine-tuning jobs list
+   llma fine-tuning jobs get <job-id>
 
 
 Once the job completes, you can check the generated models.
@@ -63,12 +63,12 @@ Then you can get the model ID and use that for the chat completion request.
 Debugging a Fine-Tuning Job
 ---------------------------
 
-You can use the `llmo` CLI to check the logs and exec into the pod.
+You can use the ``llma`` CLI to check the logs and exec into the pod.
 
 .. code-block:: console
 
-   llmo fine-tuning jobs logs <job-id>
-   llmo fine-tuning jobs exec <job-id>
+   llma fine-tuning jobs logs <job-id>
+   llma fine-tuning jobs exec <job-id>
 
 
 Managing Quota

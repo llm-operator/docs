@@ -26,7 +26,7 @@ Deploy the worker plane components LLMariner into your GPU cluster.
 
 The API endpoint of the hosted control plane is https://api.llm.cloudnatix.com/v1.
 
-Run `llmo auth login` and use the above for the endpoint URL. Then follow :doc:`multi_cluster_deployment`
+Run ``llma auth login`` and use the above for the endpoint URL. Then follow :doc:`multi_cluster_deployment`
 to obtain a cluster registration key and deploy LLMariner.
 
-TODO: Add an example `values.yaml`.
+TODO: Add an example ``values.yaml``.

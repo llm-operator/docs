@@ -10,7 +10,7 @@ You can create a training job from the local pytorch code by running the followi
 
 .. code-block:: console
 
-   llmo batch jobs create \
+   llma batch jobs create \
      --image="pytorch-2.1" \
      --from-file=my-pytorch-script.py \
      --from-file=requirements.txt \
@@ -23,17 +23,17 @@ You can check the status of the job by running the following command.
 
 .. code-block:: console
 
-   llmo batch jobs list
-   llmo batch jobs get <job-id>
+   llma batch jobs list
+   llma batch jobs get <job-id>
 
 Debugging a Training Job
 ------------------------
 
-You can use the `llmo` CLI to check the logs of a training job.
+You can use the `llma` CLI to check the logs of a training job.
 
 .. code-block:: console
 
-   llmo batch jobs logs <job-id>
+   llma batch jobs logs <job-id>
 
 
 PyTorch Distributed Data Parallel
@@ -43,7 +43,7 @@ LLMariner supports PyTorch Distributed Data Parallel (DDP) training. You can run
 
 .. code-block:: console
 
-   llmo batch jobs create \
+   llma batch jobs create \
      --image="pytorch-2.1" \
      --from-file=my-pytorch-ddp-script.py \
      --gpu=1 \

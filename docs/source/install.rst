@@ -20,8 +20,8 @@ or directly hitting the endpoint. To download the CLI, run:
 .. code-block:: console
 
    export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llm-operator-artifacts.s3.amazonaws.com/artifacts/cli/0.126.0/"${ARCH}"/llmo
-   chmod u+x ./llmo
+   curl --remote-name http://llmariner-artifacts.s3.amazonaws.com/artifacts/cli/0.132.0/"${ARCH}"/llma
+   chmod u+x ./llma
 
 
 EKS Installation
@@ -391,7 +391,7 @@ Pods running in the EKS cluster need to be able to access the S3 bucket. We will
    }
    EOF
 
-   export LLMARINER_POLICY="LLMOperatorPolicy"
+   export LLMARINER_POLICY="LLMarinerPolicy"
    aws iam create-policy --policy-name "${LLMARINER_POLICY}" --policy-document file://policy.json
 
    export LLMARINER_SERVICR_ACCOUNT_NAME="llmariner"
@@ -399,7 +399,7 @@ Pods running in the EKS cluster need to be able to access the S3 bucket. We will
      --name "${LLMARINER_SERVICR_ACCOUNT_NAME}" \
      --namespace "${LLMARINER_NAMESPACE}" \
      --cluster "${CLUSTER_NAME}" \
-     --role-name "LLMOperatorRole" \
+     --role-name "LLMarinerRole" \
      --attach-policy-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:policy/${LLMARINER_POLICY}" --approve
 
 
@@ -615,14 +615,14 @@ You can verify the installation by sending sample chat completion requests.
 
    echo "This is your endpoint URL: ${INGRESS_CONTROLLER_URL}/v1"
 
-   llmo auth login
+   llma auth login
    # Type the above endpoint URL.
 
-   llmo models list
+   llma models list
 
-   llmo chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "what is k8s?"
+   llma chat completions create --model google-gemma-2b-it-q4_0 --role user --completion "what is k8s?"
 
-   llmo chat completions create --model meta-llama-Meta-Llama-3.1-8B-Instruct-q4_0 --role user --completion "hello"
+   llma chat completions create --model meta-llama-Meta-Llama-3.1-8B-Instruct-q4_0 --role user --completion "hello"
 
 
 Optional: Monitor GPU utilization
