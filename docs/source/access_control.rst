@@ -124,7 +124,7 @@ organization in the current context is used. You can also change the current con
 Choosing an Organization and a Project
 --------------------------------------
 
-You can use `llma context set` to set the current context.
+You can use ``llma context set`` to set the current context.
 
 .. code-block:: console
 
