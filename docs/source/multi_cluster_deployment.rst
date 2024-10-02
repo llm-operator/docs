@@ -129,7 +129,7 @@ When installing the Helm chart for the worker components, you need to specify ad
 
    job-manager-dispatcher:
      notebook:
-       llmOperatorBaseUrl: https://api.llm.mydomain.com/v1
+       llmarinerBaseUrl: https://api.llm.mydomain.com/v1
 
    session-manager-agent:
      sessionManagerServerWorkerServiceAddr: session.llm.mydomain.com:443
