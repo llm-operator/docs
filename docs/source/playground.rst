@@ -107,8 +107,7 @@ and obtain the API key.
 .. code-block:: console
 
    # Download the binary.
-   export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llmariner-artifacts.s3.amazonaws.com/artifacts/cli/0.132.0/"${ARCH}"/llma
+   curl --silent https://llmariner.ai/get-cli | bash
    chmod u+x ./llma
 
    # Login. Please see below for the details.

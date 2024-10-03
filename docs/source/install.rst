@@ -19,8 +19,7 @@ or directly hitting the endpoint. To download the CLI, run:
 
 .. code-block:: console
 
-   export ARCH=<e.g., linux-amd64, darwin-arm64>
-   curl --remote-name http://llmariner-artifacts.s3.amazonaws.com/artifacts/cli/0.132.0/"${ARCH}"/llma
+   curl --silent https://llmariner.ai/get-cli | bash
    chmod u+x ./llma
 
 
